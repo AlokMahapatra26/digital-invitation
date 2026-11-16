@@ -1,41 +1,56 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
-  --font-royal: "Cinzel", Georgia, serif;
-  --font-script: "Great Vibes", "Alex Brush", cursive;
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Italiana", "Bodoni Moda", serif;
+  --font-script: "Pinyon Script", cursive;
+  --font-sans: "DM Sans", "Jost", -apple-system, sans-serif;
+
+  --color-paper: #FAF7F2;
+  --color-paper-card: #FFFFFF;
+  --color-ink: #2C2724;
+  --color-ink-muted: #746C65;
+  --color-champagne: #C8A97E;
+  --color-champagne-light: #EFE6D8;
+  --color-gold-border: rgba(200, 169, 126, 0.4);
 }
 
-/* Custom scrollbar for clean luxury look */
+/* Subtle luxury stationery feel */
+body {
+  background-color: #FAF7F2;
+  color: #2C2724;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Refined paper shadow */
+.paper-shadow {
+  box-shadow: 0 10px 40px -10px rgba(50, 40, 30, 0.07), 0 1px 3px rgba(50, 40, 30, 0.04);
+}
+
+.paper-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(213, 196, 175, 0.45);
+  box-shadow: 0 12px 35px -8px rgba(60, 45, 35, 0.06);
+}
+
+/* Blind deboss / letterpress effect */
+.deboss-text {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9), 0 -1px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(212, 175, 55, 0.4);
+  background: rgba(200, 169, 126, 0.35);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 175, 55, 0.7);
+  background: rgba(200, 169, 126, 0.6);
 }
-
-/* Shimmer animations */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.gold-gradient-text {
-  background: linear-gradient(135deg, #d4af37 0%, #fff2b2 50%, #aa820a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gold-border {
-  border-color: rgba(212, 175, 55, 0.3);
-}
-

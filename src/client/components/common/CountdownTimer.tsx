@@ -8,49 +8,35 @@ interface CountdownTimerProps {
 
 export function CountdownTimer({
   targetDate,
-  accentColor = '#d4af37',
-  themeStyle = 'royal',
+  accentColor = '#C8A97E',
 }: CountdownTimerProps) {
   const { days, hours, minutes, seconds, isExpired } = useCountdown(targetDate);
 
   if (isExpired) {
     return (
       <div className="py-4 text-center">
-        <span
-          className="text-lg font-serif tracking-widest uppercase"
-          style={{ color: accentColor }}
-        >
-          Today is the Day! 💍
+        <span className="text-sm font-serif italic tracking-widest text-[#2C2724]">
+          Today is the Day
         </span>
       </div>
     );
   }
 
   const units = [
-    { label: 'Days', value: days },
-    { label: 'Hours', value: hours },
-    { label: 'Minutes', value: minutes },
-    { label: 'Seconds', value: seconds },
+    { label: 'days', value: days },
+    { label: 'hours', value: hours },
+    { label: 'minutes', value: minutes },
+    { label: 'seconds', value: seconds },
   ];
 
   return (
-    <div className="flex items-center justify-center gap-3 sm:gap-6 my-6">
+    <div className="flex items-center justify-center gap-4 sm:gap-8 my-6">
       {units.map((unit, idx) => (
-        <div
-          key={idx}
-          className={`flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl min-w-[65px] sm:min-w-[85px] border ${
-            themeStyle === 'minimalist'
-              ? 'bg-neutral-900/40 border-neutral-800'
-              : 'bg-black/30 backdrop-blur-sm border-amber-500/20'
-          }`}
-        >
-          <span
-            className="text-2xl sm:text-4xl font-serif font-bold tracking-tight"
-            style={{ color: accentColor }}
-          >
+        <div key={idx} className="flex flex-col items-center justify-center">
+          <span className="text-2xl sm:text-3xl font-display font-normal text-[#2C2724] tracking-tight">
             {String(unit.value).padStart(2, '0')}
           </span>
-          <span className="text-[10px] sm:text-xs uppercase tracking-wider text-neutral-400 mt-1">
+          <span className="text-[10px] tracking-[0.25em] uppercase text-[#8C827A] mt-1 font-sans">
             {unit.label}
           </span>
         </div>
@@ -58,4 +44,3 @@ export function CountdownTimer({
     </div>
   );
 }
-

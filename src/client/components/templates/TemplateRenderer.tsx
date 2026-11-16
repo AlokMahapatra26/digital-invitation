@@ -1,21 +1,24 @@
 import { TemplateProps } from '@/shared/types';
-import { RoyalTemplate } from './RoyalTemplate';
+import { OrchideeTemplate } from './OrchideeTemplate';
 import { BotanicalTemplate } from './BotanicalTemplate';
 import { MinimalistTemplate } from './MinimalistTemplate';
-import { CelestialTemplate } from './CelestialTemplate';
+import { RoyalTemplate } from './RoyalTemplate';
 
 export function TemplateRenderer({ data, previewMode = false }: TemplateProps) {
-  const templateId = data.theme?.templateId || 'royal';
+  const templateId = data.theme?.templateId || 'orchidee';
 
   switch (templateId) {
-    case 'botanical':
-      return <BotanicalTemplate data={data} previewMode={previewMode} />;
-    case 'minimalist':
-      return <MinimalistTemplate data={data} previewMode={previewMode} />;
-    case 'celestial':
-      return <CelestialTemplate data={data} previewMode={previewMode} />;
+    case 'elysee':
     case 'royal':
-    default:
       return <RoyalTemplate data={data} previewMode={previewMode} />;
+    case 'minimal':
+    case 'minimalist' as any:
+      return <MinimalistTemplate data={data} previewMode={previewMode} />;
+    case 'sage':
+    case 'botanical' as any:
+      return <BotanicalTemplate data={data} previewMode={previewMode} />;
+    case 'orchidee':
+    default:
+      return <OrchideeTemplate data={data} previewMode={previewMode} />;
   }
 }

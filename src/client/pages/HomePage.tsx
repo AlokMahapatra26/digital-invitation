@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Sparkles, Eye, Check, Heart, Play, QrCode, Cloud, ArrowRight } from 'lucide-react';
+import { Eye, Check, Play } from 'lucide-react';
 import { TemplateId } from '@/shared/types';
 import { TemplateViewerModal } from '@/client/components/templates/TemplateViewerModal';
 import { QuickCreateModal } from '@/client/components/templates/QuickCreateModal';
@@ -11,49 +11,49 @@ interface TemplateCardData {
   description: string;
   image: string;
   tag: string;
-  colors: string[];
+  paletteName: string;
 }
 
 const TEMPLATES: TemplateCardData[] = [
   {
-    id: 'royal',
-    title: 'Royal Heritage',
-    subtitle: 'Shubh Vivaah • Imperial Grandeur',
+    id: 'orchidee',
+    title: 'Orchidée',
+    subtitle: 'Ivory Paper & Embossed Orchid',
     description:
-      'Deep crimson maroons, shimmering gold dust, intricate mandalas, and royal arch frames. Perfect for grand traditional Indian celebrations.',
-    image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80',
-    tag: 'Most Popular',
-    colors: ['#721c24', '#d4af37', '#2a080c'],
+      'An invitation that unfolds behind an embossed orchid on ivory paper. Champagne-gold fillets and serene Didone typography create an unpretentious, refined experience.',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+    tag: 'Flagship Design',
+    paletteName: 'Ivory · Champagne Gold · Warm Ink',
   },
   {
-    id: 'botanical',
-    title: 'Botanical Garden',
-    subtitle: 'Soft Watercolor & Eucalyptus',
+    id: 'elysee',
+    title: 'Élysée',
+    subtitle: 'Cream Arch & Antique Gold Calligraphy',
     description:
-      'Delicate pastel foliage, soft blush blooms, and gentle romantic cursive typography. Ideal for garden, destination, and spring weddings.',
+      'An embossed cream arch with handwritten script accents and subtle textured stationery stock. An homage to historic French châteaux weddings.',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
-    tag: 'Romantic',
-    colors: ['#283618', '#606c38', '#dda15e'],
+    tag: 'Timeless Classic',
+    paletteName: 'Warm Linen · Antique Gold · Espresso',
   },
   {
-    id: 'minimalist',
-    title: 'Modern Minimalist',
-    subtitle: 'Editorial High-Fashion',
+    id: 'minimal',
+    title: 'Sérénité',
+    subtitle: 'Generous Whitespace & Editorial Restraint',
     description:
-      'Striking clean serif typography, monochrome ivory and onyx aesthetic with subtle gold touches. Inspired by Vogue and luxury editorials.',
+      'High-fashion minimalism inspired by modern editorial monographs. Quiet letterspacing, delicate rules, and unhurried elegance.',
     image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80',
-    tag: 'Chic',
-    colors: ['#000000', '#737373', '#e5e5e5'],
+    tag: 'Architectural Minimal',
+    paletteName: 'Onyx · Pure White · Soft Gray',
   },
   {
-    id: 'celestial',
-    title: 'Celestial Starlit',
-    subtitle: 'Written in the Stars',
+    id: 'sage',
+    title: 'Sauge Royale',
+    subtitle: 'Sage Foliage & Botanical Blind Deboss',
     description:
-      'Deep midnight navy, glowing starlight particles, and champagne gold constellations. For magical evening receptions and starlit vows.',
-    image: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80',
-    tag: 'Dreamy',
-    colors: ['#070b19', '#4338ca', '#ffd166'],
+      'Muted sage green watercolor textures, delicate eucalyptus leaf silhouettes, and soft deckle-edge paper borders for destination celebrations.',
+    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
+    tag: 'Botanical Garden',
+    paletteName: 'Sage Leaf · Natural Cream · Champagne',
   },
 ];
 
@@ -71,129 +71,113 @@ export function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 selection:bg-amber-500/30 selection:text-amber-200">
-      {/* Top Navbar */}
-      <header className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center text-neutral-950 font-serif font-bold text-base shadow-lg shadow-amber-500/20">
-            V
-          </div>
-          <div>
-            <span className="font-serif font-bold text-xl tracking-wider text-white block">
-              Vivaah
-            </span>
-            <span className="text-[10px] text-amber-200/60 uppercase tracking-widest font-serif">
-              Digital Wedding Invitations
-            </span>
-          </div>
+    <div className="min-h-screen bg-[#FAF7F2] text-[#2C2724] font-sans antialiased selection:bg-[#EFE6D8]">
+      {/* Refined Stationery Header */}
+      <header className="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between border-b border-[#EDE5DA]">
+        <div className="flex flex-col">
+          <span className="font-display text-2xl sm:text-3xl tracking-wider text-[#231F1D]">
+            Vivaah
+          </span>
+          <span className="text-[10px] tracking-[0.3em] uppercase text-[#8C827A] mt-0.5">
+            Atelier de Papeterie Digitale
+          </span>
         </div>
 
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => handleOpenPreview(TEMPLATES[0])}
-            className="px-4 py-2 rounded-full text-xs font-semibold text-neutral-300 hover:text-white border border-neutral-800 hover:bg-neutral-900 transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <Play className="w-3 h-3 text-amber-400 fill-amber-400" />
-            <span>Sample Demo</span>
-          </button>
-        </div>
+        <button
+          onClick={() => handleOpenPreview(TEMPLATES[0])}
+          className="px-4 py-2 rounded-full text-xs font-medium tracking-wider uppercase text-[#453E3A] border border-[#D5C7B5] hover:border-[#2C2724] hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer"
+        >
+          <Play className="w-3 h-3 text-[#C8A97E] fill-[#C8A97E]" />
+          <span>Live Demo</span>
+        </button>
       </header>
 
-      {/* Hero Section */}
-      <section className="max-w-4xl mx-auto px-6 pt-10 pb-16 text-center relative">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-serif tracking-widest uppercase mb-6">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Select • Preview • Create Your Page Instantly</span>
-        </div>
+      {/* Editorial Hero */}
+      <section className="max-w-3xl mx-auto px-6 pt-16 pb-20 text-center">
+        <span className="text-[11px] font-sans tracking-[0.3em] uppercase text-[#8C827A] block mb-4">
+          Digital Wedding Stationery
+        </span>
 
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-bold text-white tracking-tight leading-tight mb-6">
-          Pick a template you love,{' '}
-          <span className="gold-gradient-text block font-script italic text-5xl sm:text-7xl md:text-8xl mt-1 font-normal">
-            we'll build the magic.
-          </span>
+        <h1 className="text-4xl sm:text-6xl font-display text-[#231F1D] tracking-tight leading-[1.15] mb-6">
+          Unpretentious, serene, and refined digital invitations.
         </h1>
 
-        <p className="max-w-xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed">
-          Click any template below to experience the animated wax seal reveal, romantic background music,
-          and live RSVP flow. Like what you see? Enter your names and your page is ready in seconds!
+        <p className="max-w-xl mx-auto text-sm sm:text-base text-[#6B635B] font-serif italic leading-relaxed mb-8">
+          Crafted like fine paper stationery with embossed botanical covers, gentle acoustic melodies,
+          and a tranquil flow tailored for WhatsApp sharing.
         </p>
       </section>
 
-      {/* 4 Interactive Templates Grid */}
-      <section className="max-w-6xl mx-auto px-6 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* The Stationery Collection Gallery */}
+      <section className="max-w-5xl mx-auto px-6 pb-24">
+        <div className="text-center mb-12">
+          <span className="text-[10px] tracking-[0.3em] uppercase text-[#8C827A] block mb-1">
+            Curated Collection
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-display text-[#231F1D]">
+            Select an Invitation Suite
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {TEMPLATES.map((tmpl) => (
             <div
               key={tmpl.id}
-              className="group relative rounded-3xl bg-neutral-900/60 border border-neutral-800 hover:border-amber-500/40 transition-all duration-300 overflow-hidden shadow-2xl flex flex-col justify-between"
+              className="group bg-white rounded-2xl border border-[#EDE5DA] shadow-[0_10px_35px_-10px_rgba(50,40,30,0.05)] overflow-hidden transition-all duration-300 hover:shadow-[0_20px_45px_-10px_rgba(50,40,30,0.1)] flex flex-col justify-between"
             >
-              {/* Image Preview Banner */}
+              {/* Image Preview Window */}
               <div
-                className="relative h-64 overflow-hidden cursor-pointer"
+                className="relative h-64 sm:h-72 overflow-hidden bg-[#FAF7F2] cursor-pointer"
                 onClick={() => handleOpenPreview(tmpl)}
               >
                 <img
                   src={tmpl.image}
                   alt={tmpl.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover filter contrast-[1.02] transition-transform duration-700 group-hover:scale-104"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
 
-                {/* Badge */}
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-xs font-medium text-amber-300">
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-xs border border-[#E8DFD0] text-[10px] uppercase tracking-widest text-[#554C44] font-medium">
                   {tmpl.tag}
                 </div>
 
-                {/* Color Palette Dots */}
-                <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-white/10">
-                  {tmpl.colors.map((color, idx) => (
-                    <span
-                      key={idx}
-                      className="w-3 h-3 rounded-full border border-white/20"
-                      style={{ backgroundColor: color }}
-                    />
-                  ))}
-                </div>
-
-                {/* Hover Play/Preview Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-xs">
-                  <div className="px-5 py-2.5 rounded-full bg-amber-400 text-neutral-950 font-semibold text-xs flex items-center gap-2 shadow-xl">
-                    <Eye className="w-4 h-4" />
-                    <span>View Interactive Preview</span>
-                  </div>
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs opacity-95">
+                  <span className="text-[11px] font-sans tracking-wide drop-shadow-sm">
+                    {tmpl.paletteName}
+                  </span>
                 </div>
               </div>
 
-              {/* Template Content */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              {/* Card Details */}
+              <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
                 <div>
-                  <span className="text-xs uppercase tracking-widest text-amber-400/90 font-serif block mb-1">
+                  <span className="text-[10px] tracking-[0.25em] uppercase text-[#C8A97E] block mb-1 font-medium">
                     {tmpl.subtitle}
                   </span>
-                  <h3 className="text-2xl font-serif font-bold text-white mb-2">
+                  <h3 className="text-2xl font-display text-[#231F1D] mb-2 font-normal">
                     {tmpl.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-[#6B635B] font-serif italic leading-relaxed mb-6">
                     {tmpl.description}
                   </p>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex items-center gap-3 pt-4 border-t border-neutral-800/80">
+                {/* Refined Action Buttons */}
+                <div className="flex items-center gap-3 pt-5 border-t border-[#F2ECE2]">
                   <button
                     onClick={() => handleOpenPreview(tmpl)}
-                    className="flex-1 py-2.5 rounded-xl border border-neutral-700 hover:border-amber-400 hover:bg-neutral-800 text-xs font-semibold text-neutral-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="flex-1 py-2.5 rounded-full border border-[#D5C7B5] hover:border-[#2C2724] hover:bg-[#FAF7F2] text-xs font-medium uppercase tracking-wider text-[#453E3A] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    <Eye className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Preview Template</span>
+                    <Eye className="w-3.5 h-3.5 text-[#C8A97E]" />
+                    <span>View Suite</span>
                   </button>
 
                   <button
                     onClick={() => handleSelectTemplate(tmpl.id)}
-                    className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:brightness-110 text-xs font-semibold text-neutral-950 transition-all flex items-center justify-center gap-1.5 shadow-md shadow-amber-500/20 cursor-pointer"
+                    className="flex-1 py-2.5 rounded-full bg-[#2C2724] hover:bg-[#453E3A] text-xs font-medium uppercase tracking-wider text-[#FAF7F2] transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
                   >
-                    <Check className="w-3.5 h-3.5" />
-                    <span>Select & Create</span>
+                    <Check className="w-3.5 h-3.5 text-[#C8A97E]" />
+                    <span>Personalize</span>
                   </button>
                 </div>
               </div>
@@ -202,12 +186,12 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-neutral-900 py-10 text-center text-xs text-neutral-500 font-sans">
-        <p>© 2026 Vivaah • Crafted with love for memorable celebrations</p>
+      {/* Understated Editorial Footer */}
+      <footer className="border-t border-[#EDE5DA] py-12 text-center text-xs text-[#8C827A] font-serif italic">
+        <p>Vivaah Atelier • Dedicated to quiet, unpretentious elegance</p>
       </footer>
 
-      {/* Full-Screen Interactive Template Preview Modal */}
+      {/* Full-Screen Interactive Preview */}
       {viewingTemplate && (
         <TemplateViewerModal
           isOpen={Boolean(viewingTemplate)}
@@ -218,7 +202,7 @@ export function HomePage() {
         />
       )}
 
-      {/* Simple Details Creation Dialog */}
+      {/* Simple Personalization Form */}
       {creatingTemplateId && (
         <QuickCreateModal
           isOpen={Boolean(creatingTemplateId)}

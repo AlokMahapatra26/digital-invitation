@@ -1,6 +1,6 @@
 // Shared Types across Server and Client (DRY principle)
 
-export type TemplateId = 'royal' | 'botanical' | 'minimalist' | 'celestial';
+export type TemplateId = 'orchidee' | 'elysee' | 'minimal' | 'sage' | 'royal';
 
 export type EventType =
   | 'haldi'

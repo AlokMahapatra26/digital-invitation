@@ -18,7 +18,6 @@ export function RSVPModal({
   onClose,
   slug,
   events,
-  accentColor = '#d4af37',
 }: RSVPModalProps) {
   const [guestName, setGuestName] = useState('');
   const [attending, setAttending] = useState(true);
@@ -29,7 +28,7 @@ export function RSVPModal({
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const { shootHearts } = useConfetti();
+  const { shootPetals } = useConfetti();
 
   const handleToggleEvent = (id: string) => {
     setSelectedEvents((prev) =>
@@ -52,10 +51,8 @@ export function RSVPModal({
         message,
       });
       setSubmitted(true);
-      shootHearts();
-    } catch (err) {
-      console.error(err);
-      // Still show success in client mode
+      shootPetals();
+    } catch {
       setSubmitted(true);
     } finally {
       setSubmitting(false);
@@ -65,93 +62,92 @@ export function RSVPModal({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs overflow-y-auto">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-lg bg-neutral-950 border border-amber-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl my-8 text-neutral-100"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.96 }}
+            className="relative w-full max-w-lg bg-[#FFFFFF] border border-[#E8DFD0] rounded-2xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(50,40,30,0.15)] my-8 text-[#2C2724]"
           >
-            {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-5 right-5 p-2 rounded-full text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors"
+              className="absolute top-5 right-5 p-2 rounded-full text-[#8C827A] hover:text-[#2C2724] hover:bg-[#FAF7F2] transition-colors cursor-pointer"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
 
             {submitted ? (
-              <div className="py-12 text-center flex flex-col items-center">
-                <div
-                  className="w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-amber-500/20 text-amber-300 border border-amber-500/40"
-                  style={{ color: accentColor }}
-                >
-                  <CheckCircle className="w-8 h-8" />
+              <div className="py-8 text-center flex flex-col items-center">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 bg-[#F4EFE6] text-[#C8A97E] border border-[#E8DFD0]">
+                  <CheckCircle className="w-7 h-7" />
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-white mb-2">
-                  Thank You, {guestName}!
+                <h3 className="text-2xl font-display text-[#2C2724] mb-2">
+                  Thank You, {guestName}
                 </h3>
-                <p className="text-neutral-300 text-sm max-w-xs mb-6">
+                <p className="text-[#6B635B] text-xs sm:text-sm max-w-xs mb-6 leading-relaxed">
                   {attending
-                    ? 'Your RSVP has been confirmed. We cannot wait to celebrate our special days with you!'
-                    : 'We will miss having you with us, but thank you warmly for letting us know!'}
+                    ? 'Your reply has been joyfully received. We eagerly look forward to celebrating with you.'
+                    : 'We will miss your presence dearly, and thank you warmly for letting us know.'}
                 </p>
                 <button
                   onClick={onClose}
-                  className="px-6 py-2.5 rounded-full text-sm font-medium bg-amber-500 hover:bg-amber-600 text-neutral-950 transition-colors"
+                  className="px-6 py-2.5 rounded-full text-xs font-medium uppercase tracking-wider bg-[#2C2724] hover:bg-[#453E3A] text-[#FAF7F2] transition-colors cursor-pointer"
                 >
-                  Back to Invitation
+                  Return to Invitation
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-serif font-semibold text-white">RSVP Confirmation</h3>
-                  <p className="text-xs text-amber-200/70 mt-1 uppercase tracking-wider font-serif">
-                    Please let us know if you can join us
+                  <span className="text-[10px] tracking-[0.3em] uppercase text-[#8C827A] block mb-1">
+                    Répondez S'il Vous Plaît
+                  </span>
+                  <h3 className="text-2xl font-display text-[#2C2724]">RSVP Response</h3>
+                  <p className="text-xs text-[#7C746C] font-serif italic mt-1">
+                    Kindly reply at your earliest convenience
                   </p>
                 </div>
 
                 {/* Name */}
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5">
-                    Your Name *
+                  <label className="block text-[11px] uppercase tracking-wider text-[#6B635B] mb-1 font-medium">
+                    Your Full Name *
                   </label>
                   <input
                     type="text"
                     required
                     value={guestName}
                     onChange={(e) => setGuestName(e.target.value)}
-                    placeholder="e.g. Ramesh & Sunita Verma"
-                    className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 focus:border-amber-400 focus:outline-none text-white text-sm"
+                    placeholder="e.g. Eleanor & Robert Vance"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] border border-[#E8DFD0] focus:border-[#C8A97E] focus:outline-none text-[#2C2724] text-xs"
                   />
                 </div>
 
-                {/* Attendance Toggle */}
+                {/* Attendance */}
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2">
-                    Will you be attending?
+                  <label className="block text-[11px] uppercase tracking-wider text-[#6B635B] mb-1.5 font-medium">
+                    Attendance
                   </label>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-2">
                     <button
                       type="button"
                       onClick={() => setAttending(true)}
-                      className={`py-3 px-4 rounded-xl text-sm font-medium border flex items-center justify-center gap-2 transition-all ${
+                      className={`py-2.5 px-3 rounded-xl text-xs font-medium border flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                         attending
-                          ? 'bg-amber-500/20 border-amber-400 text-amber-200 shadow-md'
-                          : 'bg-neutral-900 border-neutral-800 text-neutral-400'
+                          ? 'bg-[#2C2724] text-[#FAF7F2] border-[#2C2724]'
+                          : 'bg-[#FAF7F2] border-[#E8DFD0] text-[#6B635B]'
                       }`}
                     >
-                      <Heart className="w-4 h-4 text-rose-400 fill-rose-400" />
+                      <Heart className="w-3.5 h-3.5 text-[#C8A97E]" />
                       <span>Joyfully Accepts</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => setAttending(false)}
-                      className={`py-3 px-4 rounded-xl text-sm font-medium border flex items-center justify-center gap-2 transition-all ${
+                      className={`py-2.5 px-3 rounded-xl text-xs font-medium border flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                         !attending
-                          ? 'bg-neutral-800 border-neutral-600 text-neutral-200'
-                          : 'bg-neutral-900 border-neutral-800 text-neutral-400'
+                          ? 'bg-[#2C2724] text-[#FAF7F2] border-[#2C2724]'
+                          : 'bg-[#FAF7F2] border-[#E8DFD0] text-[#6B635B]'
                       }`}
                     >
                       <span>Regretfully Declines</span>
@@ -161,16 +157,15 @@ export function RSVPModal({
 
                 {attending && (
                   <>
-                    {/* Guest Count */}
                     <div>
-                      <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5 flex items-center gap-1.5">
-                        <Users className="w-3.5 h-3.5 text-amber-400" />
-                        <span>Number of Guests Attending</span>
+                      <label className="block text-[11px] uppercase tracking-wider text-[#6B635B] mb-1 flex items-center gap-1">
+                        <Users className="w-3.5 h-3.5 text-[#C8A97E]" />
+                        <span>Number of Attending Guests</span>
                       </label>
                       <select
                         value={guestCount}
                         onChange={(e) => setGuestCount(Number(e.target.value))}
-                        className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 focus:border-amber-400 focus:outline-none text-white text-sm"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] border border-[#E8DFD0] focus:border-[#C8A97E] focus:outline-none text-[#2C2724] text-xs"
                       >
                         {[1, 2, 3, 4, 5, 6].map((num) => (
                           <option key={num} value={num}>
@@ -180,66 +175,41 @@ export function RSVPModal({
                       </select>
                     </div>
 
-                    {/* Events checkboxes */}
                     <div>
-                      <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2">
-                        Which events will you attend?
-                      </label>
-                      <div className="space-y-2">
-                        {events.map((evt) => (
-                          <label
-                            key={evt.id}
-                            className="flex items-center gap-3 p-2.5 rounded-lg bg-neutral-900/60 border border-neutral-800/80 cursor-pointer hover:bg-neutral-900 transition-colors"
-                          >
-                            <input
-                              type="checkbox"
-                              checked={selectedEvents.includes(evt.id)}
-                              onChange={() => handleToggleEvent(evt.id)}
-                              className="rounded border-neutral-700 text-amber-500 focus:ring-amber-500 w-4 h-4 bg-neutral-800"
-                            />
-                            <span className="text-sm font-medium text-neutral-200">{evt.title}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Dietary / Special preferences */}
-                    <div>
-                      <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5 flex items-center gap-1.5">
-                        <Utensils className="w-3.5 h-3.5 text-amber-400" />
-                        <span>Dietary Preferences / Notes (Optional)</span>
+                      <label className="block text-[11px] uppercase tracking-wider text-[#6B635B] mb-1 flex items-center gap-1">
+                        <Utensils className="w-3.5 h-3.5 text-[#C8A97E]" />
+                        <span>Dietary Preferences (Optional)</span>
                       </label>
                       <input
                         type="text"
                         value={dietary}
                         onChange={(e) => setDietary(e.target.value)}
-                        placeholder="e.g. Pure Vegetarian, Jain, Vegan, etc."
-                        className="w-full px-4 py-2.5 rounded-xl bg-neutral-900 border border-neutral-800 focus:border-amber-400 focus:outline-none text-white text-sm"
+                        placeholder="e.g. Vegetarian, Gluten-free"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] border border-[#E8DFD0] focus:border-[#C8A97E] focus:outline-none text-[#2C2724] text-xs"
                       />
                     </div>
                   </>
                 )}
 
-                {/* Personal Message */}
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5">
-                    Personal Note to the Couple (Optional)
+                  <label className="block text-[11px] uppercase tracking-wider text-[#6B635B] mb-1">
+                    Note for the Couple (Optional)
                   </label>
                   <textarea
                     rows={2}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Send warm wishes or travel arrival details..."
-                    className="w-full px-4 py-2.5 rounded-xl bg-neutral-900 border border-neutral-800 focus:border-amber-400 focus:outline-none text-white text-sm"
+                    placeholder="Warm wishes or arrival details..."
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#FAF7F2] border border-[#E8DFD0] focus:border-[#C8A97E] focus:outline-none text-[#2C2724] text-xs"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-3.5 rounded-xl font-medium text-sm text-neutral-950 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:brightness-110 shadow-lg shadow-amber-500/20 transition-all cursor-pointer disabled:opacity-50"
+                  className="w-full py-3 rounded-xl font-medium text-xs uppercase tracking-wider text-[#FAF7F2] bg-[#2C2724] hover:bg-[#453E3A] transition-all cursor-pointer shadow-xs disabled:opacity-50 mt-4"
                 >
-                  {submitting ? 'Confirming...' : 'Submit RSVP'}
+                  {submitting ? 'Submitting...' : 'Confirm Reply'}
                 </button>
               </form>
             )}
@@ -249,4 +219,3 @@ export function RSVPModal({
     </AnimatePresence>
   );
 }
-

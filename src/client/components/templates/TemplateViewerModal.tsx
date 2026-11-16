@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Sparkles, Check } from 'lucide-react';
+import { X, Check } from 'lucide-react';
 import { TemplateId, WeddingInvitation } from '@/shared/types';
 import { SAMPLE_INVITATION } from '@/shared/defaults';
 import { TemplateRenderer } from './TemplateRenderer';
@@ -26,7 +26,6 @@ export function TemplateViewerModal({
 }: TemplateViewerModalProps) {
   const [hasOpenedEnvelope, setHasOpenedEnvelope] = useState(false);
 
-  // Clone sample data with current template ID
   const previewData: WeddingInvitation = {
     ...SAMPLE_INVITATION,
     theme: {
@@ -39,16 +38,12 @@ export function TemplateViewerModal({
     previewData.theme.backgroundMusicUrl
   );
 
-  const { shootPetals, shootGoldDust } = useConfetti();
+  const { shootPetals } = useConfetti();
 
   const handleOpenEnvelope = () => {
     setHasOpenedEnvelope(true);
     play();
-    if (templateId === 'botanical') {
-      shootPetals();
-    } else {
-      shootGoldDust();
-    }
+    shootPetals();
   };
 
   const handleModalClose = () => {
@@ -64,22 +59,22 @@ export function TemplateViewerModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-black flex flex-col overflow-hidden"
+          className="fixed inset-0 z-50 bg-[#FAF7F2] flex flex-col overflow-hidden text-[#2C2724]"
         >
-          {/* Top Sticky Header */}
-          <div className="h-14 bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800 px-4 sm:px-6 flex items-center justify-between z-40 shrink-0">
+          {/* Top Sticky Minimalist Header */}
+          <div className="h-14 bg-white/90 backdrop-blur-md border-b border-[#E8DFD0] px-4 sm:px-6 flex items-center justify-between z-40 shrink-0">
             <div className="flex items-center gap-3">
               <button
                 onClick={handleModalClose}
-                className="p-1.5 rounded-full text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors cursor-pointer"
+                className="p-1.5 rounded-full text-[#8C827A] hover:text-[#2C2724] hover:bg-[#FAF7F2] transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
               <div>
-                <span className="text-xs uppercase tracking-widest text-amber-400 font-serif block">
+                <span className="text-[10px] uppercase tracking-[0.25em] text-[#C8A97E] font-sans block">
                   Interactive Preview
                 </span>
-                <span className="text-sm font-semibold text-white">
+                <span className="text-sm font-display text-[#2C2724] tracking-wide">
                   {templateTitle}
                 </span>
               </div>
@@ -91,10 +86,10 @@ export function TemplateViewerModal({
                 pause();
                 onSelectTemplate(templateId);
               }}
-              className="px-5 py-2 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 hover:brightness-110 text-neutral-950 font-semibold text-xs uppercase tracking-wider flex items-center gap-2 shadow-lg shadow-amber-500/20 cursor-pointer transition-all"
+              className="px-5 py-2 rounded-full bg-[#2C2724] hover:bg-[#453E3A] text-[#FAF7F2] font-medium text-xs tracking-wider uppercase flex items-center gap-2 shadow-xs cursor-pointer transition-all"
             >
-              <Check className="w-3.5 h-3.5" />
-              <span>Use This Template</span>
+              <Check className="w-3.5 h-3.5 text-[#C8A97E]" />
+              <span>Use This Design</span>
             </button>
           </div>
 
@@ -102,7 +97,7 @@ export function TemplateViewerModal({
           <div className="flex-1 overflow-y-auto relative">
             {!hasOpenedEnvelope && (
               <EnvelopeOpening
-                sealText={previewData.theme.envelopeSealText || 'A & K'}
+                sealText={previewData.theme.envelopeSealText || 'S & J'}
                 coupleNames={`${previewData.couple.bride.name} & ${previewData.couple.groom.name}`}
                 primaryColor={previewData.theme.primaryColor}
                 accentColor={previewData.theme.accentColor}
@@ -127,4 +122,3 @@ export function TemplateViewerModal({
     </AnimatePresence>
   );
 }
-

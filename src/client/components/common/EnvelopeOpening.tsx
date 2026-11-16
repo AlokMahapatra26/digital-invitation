@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Heart } from 'lucide-react';
 
 interface EnvelopeOpeningProps {
   sealText: string;
@@ -11,11 +10,11 @@ interface EnvelopeOpeningProps {
 }
 
 export function EnvelopeOpening({
-  sealText,
+  sealText = 'S & J',
   coupleNames,
   onOpen,
-  primaryColor = '#721c24',
-  accentColor = '#d4af37',
+  primaryColor = '#FAF7F2',
+  accentColor = '#C8A97E',
 }: EnvelopeOpeningProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,7 +23,7 @@ export function EnvelopeOpening({
     setIsOpen(true);
     setTimeout(() => {
       onOpen();
-    }, 900);
+    }, 750);
   };
 
   return (
@@ -33,79 +32,68 @@ export function EnvelopeOpening({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.08, filter: 'blur(8px)' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-neutral-950/95 backdrop-blur-md"
+          exit={{ opacity: 0, scale: 1.04, filter: 'blur(4px)' }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-[#FAF7F2] select-none"
         >
-          {/* Subtle Ambient Background Aura */}
-          <div
-            className="absolute w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"
-            style={{ backgroundColor: primaryColor }}
-          />
+          {/* Subtle Ambient Depth */}
+          <div className="absolute inset-0 bg-radial from-[#FFFFFF] via-[#FAF7F2] to-[#EFEAE1] opacity-70 pointer-events-none" />
 
           <motion.div
-            initial={{ scale: 0.9, y: 20 }}
+            initial={{ scale: 0.95, y: 15 }}
             animate={{ scale: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="w-full max-w-sm flex flex-col items-center"
+            className="w-full max-w-sm flex flex-col items-center relative z-10"
           >
-            {/* Top Ornamental Header */}
-            <div className="flex items-center gap-2 mb-6 text-amber-200/80 tracking-widest text-xs uppercase font-serif">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>Wedding Invitation</span>
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            </div>
+            {/* Top Minimalist Header */}
+            <span className="text-[11px] font-sans tracking-[0.3em] uppercase text-[#8C827A] mb-6 block text-center">
+              Wedding Invitation
+            </span>
 
-            {/* The Envelope Body */}
+            {/* Tactile Ivory Linen Envelope */}
             <div
               onClick={handleOpen}
-              className="relative w-80 h-56 rounded-xl shadow-2xl cursor-pointer overflow-hidden border border-amber-500/30 transition-transform duration-300 hover:scale-102 flex flex-col items-center justify-center text-center p-6"
-              style={{
-                background: `linear-gradient(145deg, #1c1917, #0c0a09)`,
-                boxShadow: `0 20px 50px rgba(0,0,0,0.8), 0 0 30px ${primaryColor}40`,
-              }}
+              className="relative w-76 sm:w-84 h-56 rounded-2xl shadow-[0_25px_60px_-15px_rgba(60,45,35,0.12)] border border-[#E8DFD0] cursor-pointer overflow-hidden flex flex-col items-center justify-center text-center p-6 bg-[#FCFBF8] transition-all duration-300 hover:shadow-[0_30px_70px_-15px_rgba(60,45,35,0.18)]"
             >
-              {/* Envelope Flap Fold Lines */}
-              <div className="absolute inset-0 border-2 border-amber-400/20 m-2 rounded-lg pointer-events-none" />
-              <div className="absolute top-0 left-0 right-0 h-28 border-b border-amber-500/20 bg-white/2 pointer-events-none" 
-                   style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }} />
+              {/* Inner Hairline Fillet */}
+              <div className="absolute inset-2 border border-[#EFE7DC] rounded-xl pointer-events-none" />
 
-              {/* Couple Initial Monogram */}
-              <div className="text-stone-300 font-serif text-lg tracking-wider mb-2">
+              {/* Envelope Flap Lines */}
+              <div
+                className="absolute top-0 left-0 right-0 h-28 border-b border-[#E8DFD0] bg-[#FAF7F2]/50 pointer-events-none"
+                style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}
+              />
+
+              {/* Couple Names */}
+              <div className="font-display text-xl sm:text-2xl text-[#2C2724] tracking-wider mb-1 mt-4">
                 {coupleNames}
               </div>
 
-              <div className="text-xs text-amber-200/60 font-sans tracking-wide">
-                Cordially invite you to celebrate their union
+              <div className="text-[11px] text-[#7C746C] font-serif italic tracking-wide">
+                Cordially invite you
               </div>
 
-              {/* The Wax Seal Button */}
+              {/* The Stamped Wax Seal */}
               <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-6 w-16 h-16 rounded-full flex flex-col items-center justify-center shadow-lg border-2 relative cursor-pointer group"
-                style={{
-                  backgroundColor: primaryColor,
-                  borderColor: accentColor,
-                  boxShadow: `0 0 20px ${accentColor}60`,
-                }}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.96 }}
+                className="mt-6 w-15 h-15 rounded-full flex flex-col items-center justify-center relative cursor-pointer shadow-[0_6px_20px_rgba(140,110,80,0.25)] border border-[#BFA074] bg-gradient-to-br from-[#D5BA93] via-[#C8A97E] to-[#A8885B]"
               >
-                <span className="font-serif font-bold text-amber-100 text-sm tracking-wider">
-                  {sealText || 'WED'}
-                </span>
-                <Heart className="w-2.5 h-2.5 text-amber-300 fill-amber-300 mt-0.5" />
-
-                {/* Pulsing Ring */}
-                <div className="absolute -inset-1 rounded-full border border-amber-400/40 animate-ping pointer-events-none" />
+                {/* Monogram Seal Stamped Inside */}
+                <div className="w-12 h-12 rounded-full border border-[#DFCEB3]/50 flex items-center justify-center shadow-inner">
+                  <span className="font-serif font-semibold text-[#FFFFFF] text-xs tracking-widest deboss-text">
+                    {sealText || 'S & J'}
+                  </span>
+                </div>
               </motion.div>
             </div>
 
-            {/* Call to action label */}
+            {/* Prompt */}
             <motion.p
-              animate={{ opacity: [0.6, 1, 0.6] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="mt-6 text-sm text-amber-200/90 font-serif tracking-widest uppercase flex items-center gap-2 cursor-pointer"
+              animate={{ opacity: [0.5, 0.9, 0.5] }}
+              transition={{ repeat: Infinity, duration: 2.4 }}
               onClick={handleOpen}
+              className="mt-6 text-[11px] font-sans tracking-[0.25em] uppercase text-[#7A7169] cursor-pointer"
             >
               Tap Wax Seal to Open
             </motion.p>
@@ -115,4 +103,3 @@ export function EnvelopeOpening({
     </AnimatePresence>
   );
 }
-
