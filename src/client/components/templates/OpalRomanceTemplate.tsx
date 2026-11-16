@@ -507,7 +507,9 @@ function GateCover({
   groomName: string;
   onOpen: () => void;
 }) {
-  const [isLandscape, setIsLandscape] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth > window.innerHeight : true
+  );
   const [isOpening, setIsOpening] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -522,19 +524,29 @@ function GateCover({
 
   const config = isLandscape ? GATE_CONFIG.landscape : GATE_CONFIG.portrait;
 
-  const handleTapToOpen = () => {
+  const handleTapToOpen = (e?: React.MouseEvent | React.TouchEvent) => {
+    if (e) e.stopPropagation();
     if (isOpening) return;
     setIsOpening(true);
     setTimeout(() => {
       onOpen();
-    }, GATE_TIMINGS.done * 1000);
+    }, 2400);
+  };
+
+  const handleSkip = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onOpen();
   };
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 overflow-hidden bg-[#f4d8d6] select-none"
+      onClick={() => handleTapToOpen()}
+      onWheel={(e) => {
+        if (e.deltaY > 15) handleTapToOpen();
+      }}
+      className="fixed inset-0 z-50 overflow-hidden bg-[#f4d8d6] select-none cursor-pointer"
       exit={{ opacity: 0, filter: 'blur(8px)' }}
-      transition={{ duration: 1, ease: 'easeInOut' }}
+      transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
       {/* Blurred background image behind gates */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -543,6 +555,17 @@ function GateCover({
           alt=""
           className="h-full w-full scale-110 object-cover opacity-90 blur-2xl"
         />
+      </div>
+
+      {/* Skip Button Top Right */}
+      <div className="absolute top-4 right-4 z-40 pointer-events-auto">
+        <button
+          onClick={handleSkip}
+          className="rounded-full border border-op-gold/60 bg-black/40 hover:bg-black/70 backdrop-blur-md px-4 py-1.5 text-xs font-serif tracking-wider uppercase text-[#F9E2AF] shadow-md transition-all cursor-pointer flex items-center gap-1.5"
+        >
+          <span>Skip Intro</span>
+          <ChevronDown className="w-3.5 h-3.5" />
+        </button>
       </div>
 
       {/* Floating Rose Petals on Gate */}
@@ -564,32 +587,31 @@ function GateCover({
 
       {/* Centered Palace Gate Frame */}
       <motion.div
-        className="absolute left-1/2 top-1/2 origin-center"
+        className="absolute left-1/2 top-1/2"
         style={{
           width: isLandscape ? 'max(100vw, 100vh * 2.4)' : 'max(100vw, 100vh * 0.75)',
           aspectRatio: config.aspect,
-          transform: 'translate(-50%, -50%)',
           transformOrigin: config.centre,
         }}
-        initial={{ scale: 1, opacity: 0 }}
+        initial={{ scale: 1, opacity: 0, x: '-50%', y: '-50%' }}
         animate={
           imageLoaded
             ? isOpening
-              ? { scale: [1, 1.22, 1.22, 5.5], opacity: [1, 1, 1, 0] }
-              : { scale: 1, opacity: 1 }
-            : { opacity: 0 }
+              ? { scale: [1, 1.22, 1.22, 5.5], opacity: [1, 1, 1, 0], x: '-50%', y: '-50%' }
+              : { scale: 1, opacity: 1, x: '-50%', y: '-50%' }
+            : { opacity: 0, x: '-50%', y: '-50%' }
         }
         transition={
           isOpening
             ? {
                 scale: {
-                  duration: GATE_TIMINGS.pushAt + GATE_TIMINGS.push,
-                  times: [0, 0.6 / 4.15, 1.75 / 4.15, 1],
+                  duration: 2.8,
+                  times: [0, 0.2, 0.5, 1],
                   ease: ['easeOut', 'linear', [0.7, 0, 0.3, 1]],
                 },
-                opacity: { duration: 0.8, delay: 2.6 },
+                opacity: { duration: 0.8, delay: 1.8 },
               }
-            : { opacity: { duration: 1.2 } }
+            : { opacity: { duration: 0.6 } }
         }
       >
         <div className="relative inset-0 h-full w-full [perspective:1400px]">
@@ -733,24 +755,26 @@ function GateCover({
                   {brideName} & {groomName}
                 </p>
               </div>
-
-              {/* Tap to Open CTA Button */}
-              <div className="pointer-events-auto mt-auto pb-4">
-                <motion.button
-                  onClick={handleTapToOpen}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group flex items-center gap-2.5 rounded-full border-2 border-op-gold bg-gradient-to-r from-[#FAF6F0] via-white to-[#FAF6F0] px-6 sm:px-8 py-3 text-xs sm:text-sm font-serif font-bold uppercase tracking-[0.2em] text-[#8E1D2C] shadow-[0_10px_25px_rgba(142,29,44,0.25)] transition-all cursor-pointer"
-                >
-                  <PointerIcon className="h-4 w-4 text-op-gold-deep animate-bounce" />
-                  <span>Tap to Open the Gates</span>
-                  <Sparkles className="h-4 w-4 text-op-gold-deep" />
-                </motion.button>
-              </div>
             </div>
           )}
         </div>
       </motion.div>
+
+      {/* Floating Guaranteed-Visible Center-Bottom CTA Button */}
+      {!isOpening && (
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 pointer-events-auto">
+          <motion.button
+            onClick={handleTapToOpen}
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative flex items-center gap-2.5 rounded-full border-2 border-op-gold bg-gradient-to-r from-[#FAF6F0] via-white to-[#FAF6F0] px-7 sm:px-9 py-3.5 text-xs sm:text-sm font-serif font-bold uppercase tracking-[0.2em] text-[#8E1D2C] shadow-[0_12px_30px_rgba(142,29,44,0.35)] transition-all cursor-pointer ring-4 ring-op-gold/30 hover:ring-op-gold/60"
+          >
+            <PointerIcon className="h-4 w-4 text-op-gold-deep animate-bounce" />
+            <span>Tap to Open the Gates</span>
+            <Sparkles className="h-4 w-4 text-op-gold-deep animate-spin" />
+          </motion.button>
+        </div>
+      )}
     </motion.div>
   );
 }
@@ -1557,3 +1581,4 @@ export function OpalRomanceTemplate({ data, previewMode = false }: TemplateProps
     </div>
   );
 }
+

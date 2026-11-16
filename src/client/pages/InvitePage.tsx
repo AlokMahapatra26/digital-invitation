@@ -42,6 +42,14 @@ export function InvitePage() {
     }
   };
 
+  const isSelfContained =
+    data.theme?.templateId === 'opal-romance' ||
+    data.theme?.templateId === 'amber' ||
+    data.theme?.templateId === 'ever-after-bloom' ||
+    data.theme?.templateId === 'mountain' ||
+    data.theme?.templateId === 'royal-grace' ||
+    data.theme?.templateId === 'the-sacred-garden';
+
   if (loading) {
     return (
       <div className="min-h-screen bg-neutral-950 flex flex-col items-center justify-center text-amber-200">
@@ -53,8 +61,8 @@ export function InvitePage() {
 
   return (
     <div className="relative min-h-screen bg-neutral-950">
-      {/* Wax seal & Envelope Reveal */}
-      {!hasOpened && (
+      {/* Wax seal & Envelope Reveal for traditional templates */}
+      {!isSelfContained && !hasOpened && (
         <EnvelopeOpening
           sealText={data.theme?.envelopeSealText || 'A & K'}
           coupleNames={`${data.couple.bride.name} & ${data.couple.groom.name}`}
@@ -67,8 +75,8 @@ export function InvitePage() {
       {/* Main Wedding Invitation Template */}
       <TemplateRenderer data={data} previewMode={false} />
 
-      {/* Floating Audio Player Widget */}
-      {hasOpened && (
+      {/* Floating Audio Player Widget for traditional templates */}
+      {!isSelfContained && hasOpened && (
         <AudioPlayerWidget
           isPlaying={isPlaying}
           isMuted={isMuted}
