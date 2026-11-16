@@ -18,6 +18,16 @@ interface TemplateCardData {
 
 const TEMPLATES: TemplateCardData[] = [
   {
+    id: 'amber',
+    title: 'Sunehri / Amber',
+    subtitle: 'Cinematic Video Reveal • Canvas Scratch Card • Candlelit Editorial',
+    description:
+      'Luminous champagne & royal amber luxury with cinematic intro reveal, interactive scratch-to-reveal Save The Date, multi-event festivities, and RSVP.',
+    image: '/templates/amber/opening-poster-v3.webp',
+    tag: 'Royal Heritage',
+    paletteName: 'Royal Espresso · Antique Amber · Luminous Champagne',
+  },
+  {
     id: 'ever-after-bloom',
     title: 'Ever After Bloom',
     subtitle: 'Wax Seal Envelope • Watercolor Storybook • Amrit Mahal Palace',

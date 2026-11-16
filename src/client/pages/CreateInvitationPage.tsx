@@ -34,6 +34,13 @@ import { TemplateRenderer } from '@/client/components/templates/TemplateRenderer
 
 const TEMPLATE_OPTIONS: { id: TemplateId; name: string; tag: string; musicTitle: string; musicUrl: string }[] = [
   {
+    id: 'amber',
+    name: 'Sunehri / Amber',
+    tag: 'Royal Heritage',
+    musicTitle: 'Sunehri Candlelit Symphony',
+    musicUrl: '/templates/amber/music-placeholder.mp3',
+  },
+  {
     id: 'ever-after-bloom',
     name: 'Ever After Bloom',
     tag: 'Illustrated Storybook',
@@ -59,7 +66,7 @@ const TEMPLATE_OPTIONS: { id: TemplateId; name: string; tag: string; musicTitle:
     name: 'Royal Grace',
     tag: 'Viral Interactive',
     musicTitle: 'Royal Grace Acoustic Symphony',
-    musicUrl: 'https://zareqia.com/__l5e/assets-v1/d58c0b7f-ae8f-429c-bb86-d0dee3a95d9b/track3.mp3',
+    musicUrl: '/templates/royal-grace/soundtrack.mp3',
   },
 ];
 

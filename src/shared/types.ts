@@ -1,6 +1,13 @@
 // Shared Types across Server and Client (DRY principle)
 
-export type TemplateId = 'mountain' | 'royal-grace' | 'the-sacred-garden' | 'ever-after-bloom' | 'kumkum-kankotri' | 'patola-ivory';
+export type TemplateId =
+  | 'amber'
+  | 'ever-after-bloom'
+  | 'mountain'
+  | 'royal-grace'
+  | 'the-sacred-garden'
+  | 'kumkum-kankotri'
+  | 'patola-ivory';
 
 export type EventType =
   | 'mandap-muhurat'
