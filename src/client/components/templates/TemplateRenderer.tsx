@@ -1,5 +1,6 @@
 import { TemplateProps } from '@/shared/types';
 import { MountainTemplate } from './MountainTemplate';
+import { EverAfterBloomTemplate } from './EverAfterBloomTemplate';
 import { RoyalGraceTemplate } from './RoyalGraceTemplate';
 import { TheSacredGardenTemplate } from './TheSacredGardenTemplate';
 import { KumkumKankotriTemplate } from './KumkumKankotriTemplate';
@@ -9,6 +10,8 @@ export function TemplateRenderer({ data, previewMode = false }: TemplateProps) {
   const templateId = data.theme?.templateId || 'mountain';
 
   switch (templateId) {
+    case 'ever-after-bloom':
+      return <EverAfterBloomTemplate data={data} previewMode={previewMode} />;
     case 'mountain':
       return <MountainTemplate data={data} previewMode={previewMode} />;
     case 'royal-grace':

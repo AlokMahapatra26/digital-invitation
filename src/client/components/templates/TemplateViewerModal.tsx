@@ -27,6 +27,7 @@ export function TemplateViewerModal({
   const [hasOpenedEnvelope, setHasOpenedEnvelope] = useState(false);
 
   const isSelfContained =
+    templateId === 'ever-after-bloom' ||
     templateId === 'mountain' ||
     templateId === 'royal-grace' ||
     templateId === 'the-sacred-garden';
@@ -37,7 +38,9 @@ export function TemplateViewerModal({
       ...SAMPLE_INVITATION.theme,
       templateId,
       backgroundMusicUrl:
-        templateId === 'mountain'
+        templateId === 'ever-after-bloom'
+          ? '/templates/ever-after-bloom/soundtrack.mp3'
+          : templateId === 'mountain'
           ? '/templates/mountain/soundtrack.mp3'
           : templateId === 'royal-grace'
           ? 'https://zareqia.com/__l5e/assets-v1/d58c0b7f-ae8f-429c-bb86-d0dee3a95d9b/track3.mp3'
@@ -45,7 +48,9 @@ export function TemplateViewerModal({
           ? '/templates/the-sacred-garden/soundtrack.mp3'
           : SAMPLE_INVITATION.theme.backgroundMusicUrl,
       musicTitle:
-        templateId === 'mountain'
+        templateId === 'ever-after-bloom'
+          ? 'Amrit Mahal Dawn Symphony'
+          : templateId === 'mountain'
           ? 'Himalayan Santoor & Flute Symphony'
           : templateId === 'royal-grace'
           ? 'Royal Grace Acoustic Symphony'

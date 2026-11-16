@@ -18,6 +18,16 @@ interface TemplateCardData {
 
 const TEMPLATES: TemplateCardData[] = [
   {
+    id: 'ever-after-bloom',
+    title: 'Ever After Bloom',
+    subtitle: 'Wax Seal Envelope • Watercolor Storybook • Amrit Mahal Palace',
+    description:
+      'Hand-painted watercolor animation, gold wax seal opening video, floating wish lanterns, couple portraits, countdown, Jaipur map, and love story chapters.',
+    image: '/templates/ever-after-bloom/invite-seal.png',
+    tag: 'Illustrated Storybook',
+    paletteName: 'Blush Rose · Ivory · Jaipur Gold',
+  },
+  {
     id: 'mountain',
     title: 'Himalayan Mountain',
     subtitle: 'Indian Destination Wedding • Misty Pines • Savoy Mussoorie',
@@ -130,7 +140,7 @@ export function HomePage() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {TEMPLATES.map((tmpl) => (
             <div
               key={tmpl.id}

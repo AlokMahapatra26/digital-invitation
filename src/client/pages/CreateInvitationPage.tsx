@@ -34,6 +34,13 @@ import { TemplateRenderer } from '@/client/components/templates/TemplateRenderer
 
 const TEMPLATE_OPTIONS: { id: TemplateId; name: string; tag: string; musicTitle: string; musicUrl: string }[] = [
   {
+    id: 'ever-after-bloom',
+    name: 'Ever After Bloom',
+    tag: 'Illustrated Storybook',
+    musicTitle: 'Amrit Mahal Dawn Symphony',
+    musicUrl: '/templates/ever-after-bloom/soundtrack.mp3',
+  },
+  {
     id: 'mountain',
     name: 'Himalayan Mountain',
     tag: 'Destination Luxury',
@@ -1084,3 +1091,4 @@ export function CreateInvitationPage() {
     </div>
   );
 }
+
