@@ -53,3 +53,4 @@ export function GaneshaEmblem({ className = 'w-14 h-14', color = '#D4AF37' }: { 
     </svg>
   );
 }
+

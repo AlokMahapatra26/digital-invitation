@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MailCheck, Gift, MapPin, Navigation, Sparkles } from 'lucide-react';
+import { MailCheck, Gift, MapPin, Navigation, Sparkles, Heart } from 'lucide-react';
 import { TemplateProps } from '@/shared/types';
 import { GaneshaEmblem } from '../common/GaneshaEmblem';
 import { CountdownTimer } from '../common/CountdownTimer';
@@ -26,42 +26,44 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
           {/* Top Auspicious Ganesha Emblem */}
           <div className="flex flex-col items-center text-center pt-2 sm:pt-4 mb-6">
             <GaneshaEmblem className="w-14 h-14 sm:w-16 sm:h-16 mb-3" color="#C59A44" />
-            
+
             <div className="text-sm font-serif font-bold text-[#8C2323] tracking-widest uppercase">
-              || શ્રી ગણેશાય નમઃ ||
+              || Shree Ganeshaya Namah ||
             </div>
 
             <p className="text-[11px] sm:text-xs text-[#7A6B56] font-serif italic max-w-md mt-1 leading-relaxed">
-              {data.gujaratiShlok || '|| વક્રતુંડ મહાકાય સૂર્યકોટિ સમપ્રભ | નિર્વિઘ્નં કુરુ મે દેવ સર્વકાર્યેષુ સર્વદા ||'}
+              {data.gujaratiShlok || '|| Vakratunda Mahakaya Suryakoti Samaprabha | Nirvighnam Kuru Me Deva Sarva Karyeshu Sarvada ||'}
             </p>
           </div>
 
           <div className="w-20 h-px bg-[#E2CCA5] mx-auto my-4" />
 
-          {/* Couple Announcement in Gujarati */}
+          {/* Couple Announcement in English */}
           <div className="text-center my-6">
-            <span className="text-[11px] uppercase tracking-[0.25em] text-[#C59A44] font-semibold block mb-2">
-              શુભ લગ્ન કંકોત્રી
+            <span className="text-[11px] uppercase tracking-[0.25em] text-[#C59A44] font-semibold block mb-2 font-serif">
+              Wedding Invitation
             </span>
 
             <div className="my-3">
               <h1 className="text-3xl sm:text-5xl font-serif font-bold text-[#8C2323] tracking-wide">
-                {couple.bride.gujaratiName || couple.bride.name}
+                {couple.bride.name}
               </h1>
-              <span className="font-serif text-2xl sm:text-3xl text-[#C59A44] block my-1">
-                સંગે
+              <span className="font-serif text-2xl sm:text-3xl text-[#C59A44] block my-1 font-normal italic">
+                weds
               </span>
               <h1 className="text-3xl sm:text-5xl font-serif font-bold text-[#8C2323] tracking-wide">
-                {couple.groom.gujaratiName || couple.groom.name}
+                {couple.groom.name}
               </h1>
             </div>
 
-            <p className="text-xs text-[#6B5A47] font-serif tracking-widest uppercase mt-2">
-              {couple.bride.name} & {couple.groom.name}
-            </p>
+            {data.hashtag && (
+              <span className="inline-block mt-2 px-3 py-0.5 rounded-full bg-[#FAF5EB] border border-[#C59A44]/30 text-[11px] text-[#8C2323] font-mono">
+                {data.hashtag}
+              </span>
+            )}
           </div>
 
-          {/* Gujarati Invitation Message */}
+          {/* Invitation Message */}
           <div className="my-8 p-4 sm:p-5 rounded-2xl bg-[#FCFAF5] border border-[#EFE2CC] text-center">
             <p className="text-xs sm:text-sm text-[#4E3F30] font-serif leading-relaxed italic">
               "{data.welcomeMessage}"
@@ -72,8 +74,8 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
           <div className="my-8 text-center">
             <div className="inline-flex items-center gap-3">
               <span className="w-8 sm:w-12 h-px bg-[#E2CCA5]" />
-              <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#8C2323]">
-                મંગલ લગ્ન તિથિ: {data.weddingDate}
+              <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#8C2323] font-serif">
+                Wedding Date: {data.weddingDate}
               </span>
               <span className="w-8 sm:w-12 h-px bg-[#E2CCA5]" />
             </div>
@@ -92,7 +94,7 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
                   className="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-[#8C2323] hover:bg-[#721B1B] shadow-md shadow-[#8C2323]/20 flex items-center gap-2 cursor-pointer transition-colors"
                 >
                   <MailCheck className="w-3.5 h-3.5 text-[#EFE2CC]" />
-                  <span>હાજરી નોંધાવો (RSVP)</span>
+                  <span>RSVP</span>
                 </button>
               )}
 
@@ -102,7 +104,7 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
                   className="px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#8C2323] border border-[#8C2323]/40 bg-[#FFFDF9] hover:bg-[#F9F4EB] flex items-center gap-2 cursor-pointer transition-colors"
                 >
                   <Gift className="w-3.5 h-3.5 text-[#C59A44]" />
-                  <span>ચાંદલો / આશીર્વાદ</span>
+                  <span>Blessings / Shagun</span>
                 </button>
               )}
             </div>
@@ -115,9 +117,12 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
                 <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full overflow-hidden border-2 border-[#C59A44] mb-3 shadow-sm">
                   <img src={couple.bride.photoUrl} alt={couple.bride.name} className="w-full h-full object-cover" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-[#8C2323]">{couple.bride.gujaratiName || couple.bride.name}</h3>
+                <h3 className="font-serif text-lg font-bold text-[#8C2323]">{couple.bride.name}</h3>
                 {couple.bride.parents && (
                   <p className="text-xs text-[#6B5A47] font-serif mt-1 leading-relaxed">{couple.bride.parents}</p>
+                )}
+                {couple.bride.bio && (
+                  <p className="text-[11px] text-[#6B5A47] font-sans mt-2">{couple.bride.bio}</p>
                 )}
               </div>
 
@@ -125,9 +130,12 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
                 <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full overflow-hidden border-2 border-[#C59A44] mb-3 shadow-sm">
                   <img src={couple.groom.photoUrl} alt={couple.groom.name} className="w-full h-full object-cover" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-[#8C2323]">{couple.groom.gujaratiName || couple.groom.name}</h3>
+                <h3 className="font-serif text-lg font-bold text-[#8C2323]">{couple.groom.name}</h3>
                 {couple.groom.parents && (
                   <p className="text-xs text-[#6B5A47] font-serif mt-1 leading-relaxed">{couple.groom.parents}</p>
+                )}
+                {couple.groom.bio && (
+                  <p className="text-[11px] text-[#6B5A47] font-sans mt-2">{couple.groom.bio}</p>
                 )}
               </div>
             </div>
@@ -136,11 +144,11 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
           {/* Events Itinerary */}
           <section className="py-8 border-t border-[#EFE2CC]">
             <div className="text-center mb-8">
-              <span className="text-xs uppercase tracking-[0.25em] text-[#C59A44] block mb-1">
-                મંગલ પ્રસંગોની વિગત
+              <span className="text-xs uppercase tracking-[0.25em] text-[#C59A44] block mb-1 font-serif">
+                Ceremonial Schedule
               </span>
               <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#8C2323]">
-                શુભ પ્રસંગો
+                Wedding Itinerary
               </h2>
             </div>
 
@@ -153,10 +161,10 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
                     <div>
                       <h4 className="text-base sm:text-lg font-serif font-bold text-[#8C2323]">
-                        {evt.gujaratiTitle || evt.title}
-                      </h4>
-                      <span className="text-[11px] text-[#7A6B56] font-sans block">
                         {evt.title}
+                      </h4>
+                      <span className="text-[11px] text-[#7A6B56] font-sans">
+                        {evt.date}
                       </span>
                     </div>
                     <span className="text-xs font-serif text-[#8C2323] bg-[#F7EFE1] px-3 py-1 rounded-full border border-[#E2CCA5] self-start sm:self-auto font-medium">
@@ -173,7 +181,7 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
                   {evt.dressCode && (
                     <div className="flex items-center gap-1.5 text-[11px] text-[#7A6B56] mb-3">
                       <Sparkles className="w-3 h-3 text-[#C59A44]" />
-                      <span>પરિધાન: {evt.dressCode}</span>
+                      <span>Dress Code: {evt.dressCode}</span>
                     </div>
                   )}
 
@@ -193,7 +201,7 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
                       className="inline-flex items-center gap-1 text-[11px] text-[#8C2323] hover:underline self-end sm:self-auto font-medium"
                     >
                       <Navigation className="w-3 h-3 text-[#C59A44]" />
-                      <span>સ્થળ દર્શન (Map)</span>
+                      <span>View on Map</span>
                     </a>
                   </div>
                 </div>
@@ -205,10 +213,10 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
           {gallery && gallery.length > 0 && (
             <section className="py-8 border-t border-[#EFE2CC]">
               <div className="text-center mb-6">
-                <span className="text-xs uppercase tracking-widest text-[#C59A44] block mb-1">
-                  યાદગાર ક્ષણો
+                <span className="text-xs uppercase tracking-widest text-[#C59A44] block mb-1 font-serif">
+                  Moments
                 </span>
-                <h2 className="text-2xl font-serif font-bold text-[#8C2323]">સ્મૃતિ મંજૂષા</h2>
+                <h2 className="text-2xl font-serif font-bold text-[#8C2323]">Captured Memories</h2>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
@@ -230,11 +238,12 @@ export function PatolaIvoryTemplate({ data, previewMode = false }: TemplateProps
 
           {/* Footer Card */}
           <div className="text-center pt-8 border-t border-[#EFE2CC] text-xs text-[#7A6B56] font-serif">
+            <Heart className="w-4 h-4 text-[#8C2323] fill-[#8C2323]/30 mx-auto mb-2" />
             <p className="text-sm font-bold text-[#8C2323]">
-              લી. શાહ તથા પટેલ પરિવારના સ્નેહભર્યા વંદન
+              With Warm Blessings from the Shah & Patel Families
             </p>
-            <p className="text-[11px] text-[#C59A44] mt-1">
-              "પધારીને વર-વધૂને અંતરના આશીર્વાદ આપશોજી"
+            <p className="text-[11px] text-[#C59A44] mt-1 italic">
+              "We look forward to celebrating together"
             </p>
           </div>
         </div>

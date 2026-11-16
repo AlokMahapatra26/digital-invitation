@@ -72,7 +72,7 @@ export function TemplateViewerModal({
               </button>
               <div>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-[#D4AF37] font-serif block">
-                  લાઈવ કંકોત્રી દર્શન
+                  Interactive Preview
                 </span>
                 <span className="text-sm font-serif font-bold text-white tracking-wide">
                   {templateTitle}
@@ -89,7 +89,7 @@ export function TemplateViewerModal({
               className="px-5 py-2 rounded-full bg-gradient-to-r from-[#F9E2AF] via-[#E8C288] to-[#D4AF37] hover:brightness-110 text-[#380505] font-serif font-bold text-xs tracking-wider uppercase flex items-center gap-2 shadow-md cursor-pointer transition-all"
             >
               <Check className="w-3.5 h-3.5" />
-              <span>આ કંકોત્રી પસંદ કરો</span>
+              <span>Use This Template</span>
             </button>
           </div>
 
@@ -97,8 +97,8 @@ export function TemplateViewerModal({
           <div className="flex-1 overflow-y-auto relative">
             {!hasOpenedEnvelope && (
               <EnvelopeOpening
-                sealText={previewData.theme.envelopeSealText || '|| શ્રી ||'}
-                coupleNames={`${previewData.couple.bride.gujaratiName || previewData.couple.bride.name} અને ${previewData.couple.groom.gujaratiName || previewData.couple.groom.name}`}
+                sealText={previewData.theme.envelopeSealText || '|| SHREE ||'}
+                coupleNames={`${previewData.couple.bride.name} & ${previewData.couple.groom.name}`}
                 primaryColor={previewData.theme.primaryColor}
                 accentColor={previewData.theme.accentColor}
                 onOpen={handleOpenEnvelope}

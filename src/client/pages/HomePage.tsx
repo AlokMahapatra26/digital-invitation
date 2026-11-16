@@ -8,7 +8,6 @@ import { GaneshaEmblem } from '@/client/components/common/GaneshaEmblem';
 interface TemplateCardData {
   id: TemplateId;
   title: string;
-  gujaratiTitle: string;
   subtitle: string;
   description: string;
   image: string;
@@ -19,25 +18,23 @@ interface TemplateCardData {
 const TEMPLATES: TemplateCardData[] = [
   {
     id: 'kumkum-kankotri',
-    title: 'Kumkum Kankotri',
-    gujaratiTitle: 'કંકુ છાંટી કંકોત્રી (રાજવાડી)',
-    subtitle: '|| શ્રી ગણેશાય નમઃ || • પરંપરાગત શાહી કંકોત્રી',
+    title: 'Royal Kumkum Kankotri',
+    subtitle: '|| Shree Ganeshaya Namah || • Traditional Royal Heritage',
     description:
-      'શુભ કંકુ લાલ અને જરી સોનેરી બોર્ડર સાથેની પારંપરિક ગુજરાતી કંકોત્રી. ગણેશ સ્થાપના, પીઠી, મામેરું, રાસ-ગરબા અને શુભ હસ્તમેળાપના તમામ પ્રસંગો સાથે.',
+      'Auspicious Kumkum crimson with regal Jari gold foil borders. Features Ganesha Sthapana, Pithi, Mameru, Raas-Garba, and Hastamelap ceremonies.',
     image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80',
-    tag: 'સૌથી વધુ લોકપ્રિય (Popular)',
-    paletteName: 'કંકુ લાલ · જરી ગોલ્ડ · કેસરી',
+    tag: 'Most Popular',
+    paletteName: 'Kumkum Crimson · Jari Gold · Saffron',
   },
   {
     id: 'patola-ivory',
     title: 'Patola Ivory Silk',
-    gujaratiTitle: 'પાટણ પટોળા રોયલ સિલ્ક',
-    subtitle: 'આધુનિક ગુજરાતી રજવાડું • પટોળા બોર્ડર',
+    subtitle: 'Contemporary Gujarati Luxury • Patola Gold Foil',
     description:
-      'ક્રીમી રો-સિલ્ક ટેક્સચર અને સોનેરી પટોળા જીયોમેટ્રિક બોર્ડર સાથે આધુનિક ગુજરાતી પરિવારો માટે તૈયાર કરેલી સુંદર દ્વિભાષી (Gujarati + English) કંકોત્રી.',
+      'Creamy raw silk paper texture with intricate gold-foiled Patan Patola geometric borders. Designed for modern Gujarati families sharing on WhatsApp.',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
-    tag: 'આધુનિક ડિઝાઇન (Modern Luxury)',
-    paletteName: 'આઇવરી સિલ્ક · ગોલ્ડ ફોઇલ · મરૂન',
+    tag: 'Modern Luxury',
+    paletteName: 'Ivory Silk · Patola Gold · Auspicious Maroon',
   },
 ];
 
@@ -62,7 +59,7 @@ export function HomePage() {
           <GaneshaEmblem className="w-10 h-10" color="#8C2323" />
           <div>
             <span className="font-serif font-bold text-xl sm:text-2xl tracking-wide text-[#8C2323] block leading-tight">
-              શુભ લગ્ન કંકોત્રી
+              Shubh Vivah
             </span>
             <span className="text-[10px] tracking-[0.25em] uppercase text-[#7A6B56] block font-serif">
               Gujarati Digital Wedding Invitations
@@ -75,23 +72,23 @@ export function HomePage() {
           className="px-4 py-2 rounded-full text-xs font-serif font-semibold text-[#8C2323] border border-[#8C2323]/30 hover:bg-[#8C2323] hover:text-white transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
         >
           <Play className="w-3 h-3 text-[#D4AF37] fill-[#D4AF37]" />
-          <span>ડેમો જુઓ (Live Demo)</span>
+          <span>Live Demo</span>
         </button>
       </header>
 
       {/* Hero Section */}
       <section className="max-w-3xl mx-auto px-6 pt-12 pb-14 text-center">
         <span className="text-xs font-serif font-semibold text-[#8C2323] uppercase tracking-widest block mb-3">
-          || શ્રી ગણેશાય નમઃ ||
+          || Shree Ganeshaya Namah ||
         </span>
 
         <h1 className="text-3xl sm:text-5xl font-serif font-bold text-[#8C2323] tracking-tight leading-tight mb-4">
-          તમારા રૂડા અવસરની સુંદર ડિજિટલ કંકોત્રી.
+          Auspicious Digital Invitations for Your Wedding Celebration.
         </h1>
 
         <p className="max-w-xl mx-auto text-sm sm:text-base text-[#5D4E3E] font-serif leading-relaxed mb-6">
-          પરંપરાગત શરણાઈના સૂર, ગણેશ સ્થાપના, પીઠી, મામેરું અને રાસ-ગરબાના શુભ પ્રસંગો સાથે
-          WhatsApp પર શેર કરવા માટેની ખાસ ગુજરાતી લગ્ન કંકોત્રી.
+          Soulful Shehnai melodies, Mandap Muhurat, Pithi, Mameru, Raas-Garba, and Hastamelap
+          tailored for effortless WhatsApp sharing.
         </p>
       </section>
 
@@ -99,10 +96,10 @@ export function HomePage() {
       <section className="max-w-4xl mx-auto px-6 pb-20">
         <div className="text-center mb-8">
           <span className="text-[11px] font-serif uppercase tracking-widest text-[#7A6B56] block mb-1">
-            પસંદગી કરો
+            Curated Collection
           </span>
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#8C2323]">
-            કંકોત્રીની ડિઝાઇન પસંદ કરો
+            Choose Your Invitation Design
           </h2>
         </div>
 
@@ -142,7 +139,7 @@ export function HomePage() {
                     {tmpl.subtitle}
                   </span>
                   <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#8C2323] mb-2">
-                    {tmpl.gujaratiTitle}
+                    {tmpl.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-[#5D4E3E] font-serif leading-relaxed mb-6">
                     {tmpl.description}
@@ -156,7 +153,7 @@ export function HomePage() {
                     className="flex-1 py-2.5 rounded-full border border-[#D4AF37] hover:bg-[#FAF6F0] text-xs font-serif font-bold text-[#8C2323] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <Eye className="w-3.5 h-3.5 text-[#D4AF37]" />
-                    <span>કંકોત્રી જુઓ (Preview)</span>
+                    <span>Preview Card</span>
                   </button>
 
                   <button
@@ -164,7 +161,7 @@ export function HomePage() {
                     className="flex-1 py-2.5 rounded-full bg-[#8C2323] hover:bg-[#721B1B] text-xs font-serif font-bold text-white transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer"
                   >
                     <Check className="w-3.5 h-3.5 text-[#F9E2AF]" />
-                    <span>પસંદ કરો (Select)</span>
+                    <span>Select & Create</span>
                   </button>
                 </div>
               </div>
@@ -175,7 +172,7 @@ export function HomePage() {
 
       {/* Footer */}
       <footer className="border-t border-[#E8D4B0] py-8 text-center text-xs text-[#7A6B56] font-serif">
-        <p>શુભ લગ્ન કંકોત્રી • માંગલિક પ્રસંગો માટે પ્રેમપૂર્વક સમર્પિત</p>
+        <p>Shubh Vivah • Crafted with love and auspicious blessings</p>
       </footer>
 
       {/* Live Preview Modal */}
@@ -184,12 +181,12 @@ export function HomePage() {
           isOpen={Boolean(viewingTemplate)}
           onClose={() => setViewingTemplate(null)}
           templateId={viewingTemplate.id}
-          templateTitle={viewingTemplate.gujaratiTitle}
+          templateTitle={viewingTemplate.title}
           onSelectTemplate={handleSelectTemplate}
         />
       )}
 
-      {/* 2-Minute Form Modal */}
+      {/* Quick Create Form Modal */}
       {creatingTemplateId && (
         <QuickCreateModal
           isOpen={Boolean(creatingTemplateId)}

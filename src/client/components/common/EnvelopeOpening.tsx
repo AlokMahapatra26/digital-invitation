@@ -10,7 +10,7 @@ interface EnvelopeOpeningProps {
 }
 
 export function EnvelopeOpening({
-  sealText = '|| શ્રી ||',
+  sealText = '|| SHREE ||',
   coupleNames,
   onOpen,
 }: EnvelopeOpeningProps) {
@@ -43,12 +43,12 @@ export function EnvelopeOpening({
             transition={{ duration: 0.6 }}
             className="w-full max-w-sm flex flex-col items-center relative z-10"
           >
-            {/* Top Auspicious Shubh Vivah Tag */}
+            {/* Top Auspicious Invocation */}
             <span className="text-xs font-serif tracking-[0.25em] uppercase text-[#F9E2AF] mb-5 block text-center font-bold">
-              || શ્રી ગણેશાય નમઃ ||
+              || Shree Ganeshaya Namah ||
             </span>
 
-            {/* Traditional Kumkum Red & Gold Foil Kankotri Envelope */}
+            {/* Traditional Kumkum Red & Gold Foil Envelope */}
             <div
               onClick={handleOpen}
               className="relative w-80 sm:w-88 h-56 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6)] border-2 border-[#D4AF37] cursor-pointer overflow-hidden flex flex-col items-center justify-center text-center p-6 bg-[#5E0D0D] transition-all duration-300 hover:scale-102"
@@ -64,7 +64,7 @@ export function EnvelopeOpening({
               />
 
               <span className="text-[11px] font-serif uppercase tracking-widest text-[#F9E2AF] block mb-1">
-                શુભ લગ્ન કંકોત્રી
+                Wedding Invitation
               </span>
 
               {/* Couple Names */}
@@ -73,31 +73,31 @@ export function EnvelopeOpening({
               </div>
 
               <div className="text-xs text-[#E8C288] font-serif italic">
-                સપરિવાર પધારવા ભાવભર્યું નિમંત્રણ
+                Cordially invite you to celebrate their union
               </div>
 
-              {/* Traditional Auspicious Wax Seal */}
+              {/* Auspicious Wax Seal */}
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 className="mt-5 w-16 h-16 rounded-full flex flex-col items-center justify-center relative cursor-pointer shadow-[0_8px_25px_rgba(212,175,55,0.4)] border-2 border-[#FFE8A3] bg-gradient-to-tr from-[#9B111E] via-[#D4AF37] to-[#B31B1B]"
               >
                 <div className="w-13 h-13 rounded-full border border-[#FFF3C4]/60 flex items-center justify-center bg-[#800C17]/90 shadow-inner">
-                  <span className="font-serif font-bold text-[#F9E2AF] text-xs tracking-wider">
+                  <span className="font-serif font-bold text-[#F9E2AF] text-[10px] tracking-wider">
                     {sealText}
                   </span>
                 </div>
               </motion.div>
             </div>
 
-            {/* Prompt in Gujarati & English */}
+            {/* Prompt in English */}
             <motion.p
               animate={{ opacity: [0.6, 1, 0.6] }}
               transition={{ repeat: Infinity, duration: 2 }}
               onClick={handleOpen}
               className="mt-6 text-xs font-serif tracking-widest text-[#F9E2AF] cursor-pointer flex items-center gap-1.5"
             >
-              <span>કંકોત્રી ખોલવા માટે સ્પર્શ કરો (Tap to Open)</span>
+              <span>Tap Wax Seal to Open Invitation</span>
             </motion.p>
           </motion.div>
         </motion.div>
