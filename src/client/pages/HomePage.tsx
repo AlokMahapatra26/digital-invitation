@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Eye, Check, Play } from 'lucide-react';
+import { Eye, Check } from 'lucide-react';
 import { TemplateId } from '@/shared/types';
 import { TemplateViewerModal } from '@/client/components/templates/TemplateViewerModal';
 import { QuickCreateModal } from '@/client/components/templates/QuickCreateModal';
@@ -66,14 +66,6 @@ export function HomePage() {
             </span>
           </div>
         </div>
-
-        <button
-          onClick={() => handleOpenPreview(TEMPLATES[0])}
-          className="px-4 py-2 rounded-full text-xs font-serif font-semibold text-[#8C2323] border border-[#8C2323]/30 hover:bg-[#8C2323] hover:text-white transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
-        >
-          <Play className="w-3 h-3 text-[#D4AF37] fill-[#D4AF37]" />
-          <span>Live Demo</span>
-        </button>
       </header>
 
       {/* Hero Section */}
