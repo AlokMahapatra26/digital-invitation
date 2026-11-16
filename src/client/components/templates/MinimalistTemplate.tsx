@@ -140,3 +140,4 @@ export function MinimalistTemplate({ data, previewMode = false }: TemplateProps)
     </div>
   );
 }
+

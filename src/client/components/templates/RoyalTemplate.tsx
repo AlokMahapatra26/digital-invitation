@@ -275,7 +275,7 @@ export function RoyalTemplate({ data, previewMode = false }: TemplateProps) {
           Warmly Invited by the Sharma & Mehra Families
         </p>
         <p className="text-[11px] text-neutral-500 mt-2 font-sans">
-          Created with Vivaah Digital Invitations • Cloudflare Edge Platform
+          Created with Vivaah Digital Invitations
         </p>
       </footer>
 

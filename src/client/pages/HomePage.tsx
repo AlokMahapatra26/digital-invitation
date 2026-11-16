@@ -82,8 +82,8 @@ export function HomePage() {
             <span className="font-serif font-bold text-xl tracking-wider text-white block">
               Vivaah
             </span>
-            <span className="text-[10px] text-amber-200/60 uppercase tracking-widest font-mono">
-              Cloudflare Native
+            <span className="text-[10px] text-amber-200/60 uppercase tracking-widest font-serif">
+              Digital Wedding Invitations
             </span>
           </div>
         </div>
@@ -202,37 +202,9 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Cloudflare Edge Platform Highlights */}
-      <section className="max-w-5xl mx-auto px-6 py-12 border-t border-neutral-900 text-center">
-        <span className="text-[11px] uppercase tracking-widest text-amber-300 font-mono block mb-2">
-          Cloudflare Native Performance
-        </span>
-        <h4 className="text-xl font-serif text-white mb-6">
-          Lightning Fast for Every Guest on WhatsApp
-        </h4>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
-          <div className="p-4 rounded-2xl bg-neutral-900/40 border border-neutral-800">
-            <span className="text-amber-400 font-semibold text-sm block">0 Egress Media</span>
-            <p className="text-xs text-neutral-400 mt-1">Cloudflare R2 hosts songs & photos with zero bandwidth bills.</p>
-          </div>
-          <div className="p-4 rounded-2xl bg-neutral-900/40 border border-neutral-800">
-            <span className="text-emerald-400 font-semibold text-sm block">Instant RSVP Sync</span>
-            <p className="text-xs text-neutral-400 mt-1">Cloudflare D1 edge SQLite collects guest headcounts instantly.</p>
-          </div>
-          <div className="p-4 rounded-2xl bg-neutral-900/40 border border-neutral-800">
-            <span className="text-blue-400 font-semibold text-sm block">15ms Edge Slugs</span>
-            <p className="text-xs text-neutral-400 mt-1">Cloudflare KV resolves customized links anywhere in the world.</p>
-          </div>
-          <div className="p-4 rounded-2xl bg-neutral-900/40 border border-neutral-800">
-            <span className="text-purple-400 font-semibold text-sm block">Zero Cold Start</span>
-            <p className="text-xs text-neutral-400 mt-1">Cloudflare Workers run within 5ms of your guests tapping the invite.</p>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
-      <footer className="border-t border-neutral-900 py-8 text-center text-xs text-neutral-500 font-sans">
-        <p>© 2026 Vivaah Digital Invitations • Powered by Cloudflare Workers, D1 & R2</p>
+      <footer className="border-t border-neutral-900 py-10 text-center text-xs text-neutral-500 font-sans">
+        <p>© 2026 Vivaah • Crafted with love for memorable celebrations</p>
       </footer>
 
       {/* Full-Screen Interactive Template Preview Modal */}

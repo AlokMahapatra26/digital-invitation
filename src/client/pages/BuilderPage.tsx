@@ -40,9 +40,6 @@ export function BuilderPage() {
               Vivaah Studio
             </span>
           </a>
-          <span className="hidden sm:inline-block text-xs px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 font-mono">
-            Cloudflare Native
-          </span>
         </div>
 
         {/* Device Switcher & Action */}

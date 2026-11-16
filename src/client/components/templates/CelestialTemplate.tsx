@@ -142,3 +142,4 @@ export function CelestialTemplate({ data, previewMode = false }: TemplateProps) 
     </div>
   );
 }
+
