@@ -43,7 +43,7 @@ const TEMPLATES: TemplateCardData[] = [
     subtitle: 'Interactive Wax Seal Envelope • Swans Video • Einaudi Soundtrack',
     description:
       'Stationery luxury with interactive tap-to-open envelope, flap video transition, serene looping swans banner, countdown clock, and RSVP.',
-    image: 'https://static.tildacdn.net/tild3532-3566-4962-b739-616664393337/Screenshot_2026-06-2.png',
+    image: '/templates/the-sacred-garden/envelope.png',
     tag: 'Signature Experience',
     paletteName: 'Warm Parchment · Burgundy · Heritage Gold',
   },
@@ -53,7 +53,7 @@ const TEMPLATES: TemplateCardData[] = [
     subtitle: 'Video Intro • Interactive Scratch Foil Card • Olive Linen Luxury',
     description:
       'Cinematic video intro, interactive canvas scratch-to-reveal Save The Date card, program itinerary, dress code, and RSVP.',
-    image: 'https://zareqia.com/__l5e/assets-v1/5dfd7a80-483d-4a6d-860d-da3e341fa151/royal-grace-welcome-bg.jpg',
+    image: '/templates/royal-grace/welcome_bg.jpg',
     tag: 'Viral Interactive',
     paletteName: 'Olive Sage · Warm Linen · Heritage Gold',
   },

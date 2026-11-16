@@ -96,10 +96,10 @@ export function RoyalGraceTemplate({ data, previewMode = false }: TemplateProps)
     return () => clearInterval(interval);
   }, [weddingDateStr]);
 
-  // Audio source: Zareqia Royal Grace soundtrack (track3.mp3) or custom
+  // Audio source: Local Royal Grace soundtrack (soundtrack.mp3) or custom
   const audioSrc =
     data.theme?.backgroundMusicUrl ||
-    'https://zareqia.com/__l5e/assets-v1/d58c0b7f-ae8f-429c-bb86-d0dee3a95d9b/track3.mp3';
+    '/templates/royal-grace/soundtrack.mp3';
 
   // Handle Video Tap / Click to Start Experience
   const handleStartExperience = async () => {
@@ -391,7 +391,8 @@ export function RoyalGraceTemplate({ data, previewMode = false }: TemplateProps)
         {/* Looping Ambient Video */}
         <video
           ref={videoRef}
-          src="https://zareqia.com/__l5e/assets-v1/ed2c9cdc-e26f-46e3-8d7e-c91764fe28f1/demo-v3-royal-grace.mp4"
+          src="/templates/royal-grace/intro.mp4"
+          poster="/templates/royal-grace/intro_poster.jpg"
           playsInline
           muted
           loop
@@ -499,7 +500,7 @@ export function RoyalGraceTemplate({ data, previewMode = false }: TemplateProps)
       <div
         style={{
           backgroundColor: '#D6C5AC',
-          backgroundImage: `url('https://zareqia.com/__l5e/assets-v1/5dfd7a80-483d-4a6d-860d-da3e341fa151/royal-grace-welcome-bg.jpg'), url('https://zareqia.com/__l5e/assets-v1/272e334b-37a6-4ac3-a323-2eac657eb963/royal-grace-general-bg.jpg')`,
+          backgroundImage: `url('/templates/royal-grace/welcome_bg.jpg'), url('/templates/royal-grace/general_bg.jpg')`,
           backgroundPosition: 'top center, center 140.48vw',
           backgroundRepeat: 'no-repeat, repeat-y',
           backgroundSize: '100% auto, 100% auto',
@@ -894,7 +895,7 @@ export function RoyalGraceTemplate({ data, previewMode = false }: TemplateProps)
         ───────────────────────────────────────────────────────────── */}
         <footer
           style={{
-            backgroundImage: `url('https://zareqia.com/__l5e/assets-v1/58cfc8f1-f2cf-4f50-835e-ee53400ff9e4/royal-grace-end-bg.jpg')`,
+            backgroundImage: `url('/templates/royal-grace/end_bg.jpg')`,
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100% auto',

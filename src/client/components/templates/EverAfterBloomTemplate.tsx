@@ -960,3 +960,4 @@ export function EverAfterBloomTemplate({ data, previewMode = false }: TemplatePr
     </div>
   );
 }
+
