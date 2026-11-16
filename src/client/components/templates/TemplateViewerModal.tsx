@@ -120,7 +120,7 @@ export function TemplateViewerModal({
               />
             )}
 
-            <TemplateRenderer data={previewData} previewMode={false} />
+            <TemplateRenderer key={`${templateId}-${isOpen}`} data={previewData} previewMode={false} />
 
             {!isSelfContained && hasOpenedEnvelope && (
               <AudioPlayerWidget

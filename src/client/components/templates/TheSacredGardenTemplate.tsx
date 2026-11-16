@@ -86,6 +86,27 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
     data.theme?.backgroundMusicUrl ||
     '/templates/the-sacred-garden/soundtrack.mp3';
 
+  // Play video reliably as soon as introStep switches to 'video'
+  useEffect(() => {
+    if (introStep === 'video') {
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play().catch((err) => {
+          console.warn('Video play error:', err);
+          setTimeout(() => setIntroStep('ready'), 2000);
+        });
+      }
+
+      // Hard safety timer: envelope video is 4.8s. Force advance if timeupdate or ended doesn't fire
+      const safetyTimer = setTimeout(() => {
+        setIntroStep('fading');
+        setTimeout(() => setIntroStep('ready'), 1000);
+      }, 4800);
+
+      return () => clearTimeout(safetyTimer);
+    }
+  }, [introStep]);
+
   // Handle Envelope Open Sequence
   const handleOpenEnvelope = () => {
     if (introStep !== 'envelope') return;
@@ -100,20 +121,9 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
         console.log('Audio autoplay prevented:', e);
       });
     }
-
-    // 2. Play Flap Opening Transition Video (4.8s duration)
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {
-        // Fallback after 4.5s
-        setTimeout(() => {
-          setIntroStep('ready');
-        }, 4500);
-      });
-    }
   };
 
-  // Video timeupdate: only start fading once the flap is fully open (at 4.2s out of 4.8s)
+  // Video timeupdate: start fading once the flap is fully open (at 4.2s out of 4.8s)
   const handleVideoTimeUpdate = () => {
     if (videoRef.current) {
       const v = videoRef.current;
@@ -121,17 +131,17 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
         setIntroStep('fading');
         setTimeout(() => {
           setIntroStep('ready');
-        }, 1200);
+        }, 1000);
       }
     }
   };
 
   const handleVideoEnded = () => {
-    if (introStep !== 'ready') {
+    if (introStep === 'video') {
       setIntroStep('fading');
       setTimeout(() => {
         setIntroStep('ready');
-      }, 1200);
+      }, 1000);
     }
   };
 
@@ -272,10 +282,19 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
       {/* ─────────────────────────────────────────────────────────────
           2. INTRO TRANSITION VIDEO (Fully plays opening flap)
       ───────────────────────────────────────────────────────────── */}
-      {introStep !== 'ready' && introStep !== 'envelope' && (
+      {introStep !== 'ready' && (
         <div
-          className={`fixed inset-0 z-[99998] flex items-center justify-center bg-[#F9F0E0] pointer-events-none transition-opacity duration-1000 ${
-            introStep === 'fading' ? 'opacity-0' : 'opacity-100'
+          onClick={() => {
+            if (introStep === 'video') {
+              setIntroStep('ready');
+            }
+          }}
+          className={`fixed inset-0 z-[99998] flex items-center justify-center bg-[#F9F0E0] transition-opacity duration-1000 ${
+            introStep === 'video'
+              ? 'opacity-100 pointer-events-auto cursor-pointer'
+              : introStep === 'fading'
+              ? 'opacity-0 pointer-events-none'
+              : 'opacity-0 pointer-events-none'
           }`}
         >
           <video
@@ -283,9 +302,10 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
             src="/templates/the-sacred-garden/envelope_opening.mp4"
             muted
             playsInline
+            preload="auto"
             onTimeUpdate={handleVideoTimeUpdate}
             onEnded={handleVideoEnded}
-            className="w-full max-w-[440px] object-contain drop-shadow-2xl"
+            className="w-full max-w-[440px] object-contain drop-shadow-2xl select-none"
           />
         </div>
       )}
