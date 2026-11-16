@@ -20,7 +20,6 @@ import {
 import { WeddingInvitation, TemplateId } from '@/shared/types';
 import { useAuth } from '@/client/context/AuthContext';
 import { GaneshaEmblem } from '@/client/components/common/GaneshaEmblem';
-import { QuickCreateModal } from '@/client/components/templates/QuickCreateModal';
 
 export function DashboardPage() {
   const { user, token, logout, openAuthModal } = useAuth();
@@ -29,8 +28,6 @@ export function DashboardPage() {
   const [invitations, setInvitations] = useState<WeddingInvitation[]>([]);
   const [loading, setLoading] = useState(true);
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  const [selectedTemplateId, setSelectedTemplateId] = useState<TemplateId>('mountain');
 
   useEffect(() => {
     if (!user && !token) {
@@ -159,10 +156,7 @@ export function DashboardPage() {
           </div>
 
           <button
-            onClick={() => {
-              setSelectedTemplateId('mountain');
-              setIsCreateModalOpen(true);
-            }}
+            onClick={() => navigate('/create')}
             className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#8C2323] to-[#681818] hover:brightness-110 text-white font-serif font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow-md transition-all self-start sm:self-center cursor-pointer"
           >
             <Plus className="w-4 h-4" />
@@ -187,10 +181,7 @@ export function DashboardPage() {
               with your couple photos, events, and love story.
             </p>
             <button
-              onClick={() => {
-                setSelectedTemplateId('mountain');
-                setIsCreateModalOpen(true);
-              }}
+              onClick={() => navigate('/create')}
               className="px-6 py-3 rounded-full bg-[#8C2323] hover:bg-[#681818] text-white font-serif font-bold text-xs uppercase tracking-wider inline-flex items-center gap-2 shadow-md transition-all cursor-pointer"
             >
               <Plus className="w-4 h-4" />
@@ -311,13 +302,7 @@ export function DashboardPage() {
           </div>
         )}
       </main>
-
-      {/* Quick Create Modal */}
-      <QuickCreateModal
-        isOpen={isCreateModalOpen}
-        onClose={() => setIsCreateModalOpen(false)}
-        selectedTemplateId={selectedTemplateId}
-      />
     </div>
   );
 }
+

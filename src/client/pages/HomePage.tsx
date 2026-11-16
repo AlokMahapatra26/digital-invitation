@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Eye, Check, LogIn, LayoutDashboard, User as UserIcon } from 'lucide-react';
 import { TemplateId } from '@/shared/types';
 import { TemplateViewerModal } from '@/client/components/templates/TemplateViewerModal';
-import { QuickCreateModal } from '@/client/components/templates/QuickCreateModal';
 import { GaneshaEmblem } from '@/client/components/common/GaneshaEmblem';
 import { useAuth } from '@/client/context/AuthContext';
 
@@ -52,8 +51,8 @@ const TEMPLATES: TemplateCardData[] = [
 
 export function HomePage() {
   const { user, openAuthModal } = useAuth();
+  const navigate = useNavigate();
   const [viewingTemplate, setViewingTemplate] = useState<TemplateCardData | null>(null);
-  const [creatingTemplateId, setCreatingTemplateId] = useState<TemplateId | null>(null);
 
   const handleOpenPreview = (tmpl: TemplateCardData) => {
     setViewingTemplate(tmpl);
@@ -61,7 +60,7 @@ export function HomePage() {
 
   const handleSelectTemplate = (id: TemplateId) => {
     setViewingTemplate(null);
-    setCreatingTemplateId(id);
+    navigate(`/create?template=${id}`);
   };
 
   return (
@@ -211,15 +210,6 @@ export function HomePage() {
           templateId={viewingTemplate.id}
           templateTitle={viewingTemplate.title}
           onSelectTemplate={handleSelectTemplate}
-        />
-      )}
-
-      {/* Quick Create Form Modal */}
-      {creatingTemplateId && (
-        <QuickCreateModal
-          isOpen={Boolean(creatingTemplateId)}
-          onClose={() => setCreatingTemplateId(null)}
-          selectedTemplateId={creatingTemplateId}
         />
       )}
     </div>

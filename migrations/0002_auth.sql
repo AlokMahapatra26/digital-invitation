@@ -17,3 +17,4 @@ CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 -- Add user_id column to invitations table for user ownership
 ALTER TABLE invitations ADD COLUMN user_id TEXT;
 CREATE INDEX IF NOT EXISTS idx_invitations_user_id ON invitations(user_id);
+

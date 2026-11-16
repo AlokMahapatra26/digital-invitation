@@ -244,3 +244,4 @@ authRoute.get('/my-invitations', async (c) => {
 
   return c.json({ invitations });
 });
+

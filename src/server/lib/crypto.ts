@@ -102,3 +102,4 @@ export async function verifyToken<T = any>(token: string, secret: string = DEFAU
     return null;
   }
 }
+
