@@ -31,6 +31,14 @@ export function TemplateViewerModal({
     theme: {
       ...SAMPLE_INVITATION.theme,
       templateId,
+      backgroundMusicUrl:
+        templateId === 'the-sacred-garden'
+          ? 'https://pub-4dc8201144ca418fb604349c73e8c724.r2.dev/Einaudi_%20Divenire%20(1)%20(1).mp3'
+          : SAMPLE_INVITATION.theme.backgroundMusicUrl,
+      musicTitle:
+        templateId === 'the-sacred-garden'
+          ? 'Ludovico Einaudi — Divenire'
+          : SAMPLE_INVITATION.theme.musicTitle,
     },
   };
 
@@ -95,7 +103,7 @@ export function TemplateViewerModal({
 
           {/* Interactive Preview Container */}
           <div className="flex-1 overflow-y-auto relative">
-            {!hasOpenedEnvelope && (
+            {templateId !== 'the-sacred-garden' && !hasOpenedEnvelope && (
               <EnvelopeOpening
                 sealText={previewData.theme.envelopeSealText || '|| SHREE ||'}
                 coupleNames={`${previewData.couple.bride.name} & ${previewData.couple.groom.name}`}
@@ -107,7 +115,7 @@ export function TemplateViewerModal({
 
             <TemplateRenderer data={previewData} previewMode={false} />
 
-            {hasOpenedEnvelope && (
+            {templateId !== 'the-sacred-garden' && hasOpenedEnvelope && (
               <AudioPlayerWidget
                 isPlaying={isPlaying}
                 isMuted={isMuted}

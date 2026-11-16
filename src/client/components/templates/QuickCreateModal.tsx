@@ -53,8 +53,16 @@ export function QuickCreateModal({
   const [gallery, setGallery] = useState<string[]>(SAMPLE_INVITATION.gallery);
 
   // Music & Gifting
-  const [musicTitle, setMusicTitle] = useState('Mangal Shehnai & Wedding Symphony');
-  const [musicUrl, setMusicUrl] = useState(SAMPLE_INVITATION.theme.backgroundMusicUrl);
+  const [musicTitle, setMusicTitle] = useState(
+    selectedTemplateId === 'the-sacred-garden'
+      ? 'Ludovico Einaudi — Divenire'
+      : 'Mangal Shehnai & Wedding Symphony'
+  );
+  const [musicUrl, setMusicUrl] = useState(
+    selectedTemplateId === 'the-sacred-garden'
+      ? 'https://pub-4dc8201144ca418fb604349c73e8c724.r2.dev/Einaudi_%20Divenire%20(1)%20(1).mp3'
+      : SAMPLE_INVITATION.theme.backgroundMusicUrl
+  );
   const [upiId, setUpiId] = useState('shah.patel@okhdfcbank');
 
   const [loading, setLoading] = useState(false);

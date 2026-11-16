@@ -11,6 +11,20 @@ The platform empowers couples to:
 
 ## 2. Core User Personas & Flows
 
+### Curated Active Templates (Exactly 2 Designs)
+1. **The Sacred Garden (`the-sacred-garden`)**:
+   - Exact replica of the high-end stationery template from `https://webgencyinvitations.com/thesacredgarden`.
+   - **Interactive Envelope Overlay (`#weiOverlay`)**: Warm cream background (`#F9F0E0`), realistic physical envelope image, pulsing "TAP TO OPEN" prompt with animated chevron.
+   - **Flap Opening Transition Video (`#weiVideoWrap`)**: Smooth opening animation (`1782224012851_1_m6ww6v.mp4`) that fades out 0.8s before finishing.
+   - **Soundtrack**: Ludovico Einaudi - *Divenire* looping in background.
+   - **Floating Audio Control**: Circular `#5A0F1B` deep maroon button at bottom right (60px) with play/pause icons.
+   - **Cinematic Looping Banner**: Serene white swans swimming on water (`Swans2_1_qwzsod.mov`).
+   - **Typography & Theme**: Authentic `Cinzel` serif titles, `Ovo` body copy, floral arch dividers, countdown clock, timeline schedule, Google Maps link, dress code, and interactive RSVP modal.
+2. **Royal Kumkum Kankotri (`kumkum-kankotri`)**:
+   - Traditional Gujarati crimson (`#5E0D0D`) and Jari gold foil borders.
+   - All text in English with auspicious invocations (|| Shree Ganeshaya Namah ||).
+   - Full ceremony timeline (Mandap Muhurat, Pithi, Mameru, Raas-Garba, Hastamelap, Reception).
+
 ### A. The Invitee / Guest Flow
 ```
 [WhatsApp / Link Click] 

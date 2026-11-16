@@ -17,24 +17,24 @@ interface TemplateCardData {
 
 const TEMPLATES: TemplateCardData[] = [
   {
+    id: 'the-sacred-garden',
+    title: 'The Sacred Garden',
+    subtitle: 'Interactive Wax Seal Envelope • Swans Video • Einaudi Soundtrack',
+    description:
+      'Exact stationery luxury with interactive tap-to-open envelope, flap video transition, serene looping swans banner, countdown clock, and RSVP.',
+    image: 'https://static.tildacdn.net/tild3532-3566-4962-b739-616664393337/Screenshot_2026-06-2.png',
+    tag: 'Signature Experience',
+    paletteName: 'Warm Parchment · Burgundy · Heritage Gold',
+  },
+  {
     id: 'kumkum-kankotri',
     title: 'Royal Kumkum Kankotri',
     subtitle: '|| Shree Ganeshaya Namah || • Traditional Royal Heritage',
     description:
       'Auspicious Kumkum crimson with regal Jari gold foil borders. Features Ganesha Sthapana, Pithi, Mameru, Raas-Garba, and Hastamelap ceremonies.',
     image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80',
-    tag: 'Most Popular',
+    tag: 'Traditional Classic',
     paletteName: 'Kumkum Crimson · Jari Gold · Saffron',
-  },
-  {
-    id: 'patola-ivory',
-    title: 'Patola Ivory Silk',
-    subtitle: 'Contemporary Gujarati Luxury • Patola Gold Foil',
-    description:
-      'Creamy raw silk paper texture with intricate gold-foiled Patan Patola geometric borders. Designed for modern Gujarati families sharing on WhatsApp.',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
-    tag: 'Modern Luxury',
-    paletteName: 'Ivory Silk · Patola Gold · Auspicious Maroon',
   },
 ];
 
