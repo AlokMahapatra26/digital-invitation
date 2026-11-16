@@ -1,23 +1,25 @@
 // Shared Types across Server and Client (DRY principle)
 
-export type TemplateId = 'orchidee' | 'elysee' | 'minimal' | 'sage' | 'royal';
+export type TemplateId = 'kumkum-kankotri' | 'patola-ivory';
 
 export type EventType =
-  | 'haldi'
-  | 'mehendi'
-  | 'sangeet'
-  | 'wedding'
+  | 'mandap-muhurat'
+  | 'grah-shanti'
+  | 'pithi'
+  | 'mameru'
+  | 'raas-garba'
+  | 'hastamelap'
   | 'reception'
-  | 'cocktail'
   | 'ceremony'
   | 'other';
 
 export interface WeddingEvent {
   id: string;
   title: string;
+  gujaratiTitle?: string;
   type: EventType;
   date: string; // YYYY-MM-DD
-  time: string; // e.g. "5:00 PM"
+  time: string; // e.g. "05:00 PM"
   venueName: string;
   address: string;
   mapUrl?: string;
@@ -35,6 +37,7 @@ export interface StoryMoment {
 
 export interface PersonDetails {
   name: string;
+  gujaratiName?: string;
   parents?: string;
   bio?: string;
   photoUrl?: string;
@@ -60,8 +63,9 @@ export interface WeddingInvitation {
   slug: string;
   couple: CoupleDetails;
   tagline: string;
+  gujaratiShlok?: string;
   welcomeMessage: string;
-  weddingDate: string; // ISO date string or YYYY-MM-DD
+  weddingDate: string; // YYYY-MM-DD
   hashtag?: string;
   events: WeddingEvent[];
   story: StoryMoment[];
@@ -101,4 +105,3 @@ export interface TemplateProps {
   data: WeddingInvitation;
   previewMode?: boolean;
 }
-

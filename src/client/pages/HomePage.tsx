@@ -3,10 +3,12 @@ import { Eye, Check, Play } from 'lucide-react';
 import { TemplateId } from '@/shared/types';
 import { TemplateViewerModal } from '@/client/components/templates/TemplateViewerModal';
 import { QuickCreateModal } from '@/client/components/templates/QuickCreateModal';
+import { GaneshaEmblem } from '@/client/components/common/GaneshaEmblem';
 
 interface TemplateCardData {
   id: TemplateId;
   title: string;
+  gujaratiTitle: string;
   subtitle: string;
   description: string;
   image: string;
@@ -16,44 +18,26 @@ interface TemplateCardData {
 
 const TEMPLATES: TemplateCardData[] = [
   {
-    id: 'orchidee',
-    title: 'Orchidée',
-    subtitle: 'Ivory Paper & Embossed Orchid',
+    id: 'kumkum-kankotri',
+    title: 'Kumkum Kankotri',
+    gujaratiTitle: 'કંકુ છાંટી કંકોત્રી (રાજવાડી)',
+    subtitle: '|| શ્રી ગણેશાય નમઃ || • પરંપરાગત શાહી કંકોત્રી',
     description:
-      'An invitation that unfolds behind an embossed orchid on ivory paper. Champagne-gold fillets and serene Didone typography create an unpretentious, refined experience.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
-    tag: 'Flagship Design',
-    paletteName: 'Ivory · Champagne Gold · Warm Ink',
+      'શુભ કંકુ લાલ અને જરી સોનેરી બોર્ડર સાથેની પારંપરિક ગુજરાતી કંકોત્રી. ગણેશ સ્થાપના, પીઠી, મામેરું, રાસ-ગરબા અને શુભ હસ્તમેળાપના તમામ પ્રસંગો સાથે.',
+    image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80',
+    tag: 'સૌથી વધુ લોકપ્રિય (Popular)',
+    paletteName: 'કંકુ લાલ · જરી ગોલ્ડ · કેસરી',
   },
   {
-    id: 'elysee',
-    title: 'Élysée',
-    subtitle: 'Cream Arch & Antique Gold Calligraphy',
+    id: 'patola-ivory',
+    title: 'Patola Ivory Silk',
+    gujaratiTitle: 'પાટણ પટોળા રોયલ સિલ્ક',
+    subtitle: 'આધુનિક ગુજરાતી રજવાડું • પટોળા બોર્ડર',
     description:
-      'An embossed cream arch with handwritten script accents and subtle textured stationery stock. An homage to historic French châteaux weddings.',
+      'ક્રીમી રો-સિલ્ક ટેક્સચર અને સોનેરી પટોળા જીયોમેટ્રિક બોર્ડર સાથે આધુનિક ગુજરાતી પરિવારો માટે તૈયાર કરેલી સુંદર દ્વિભાષી (Gujarati + English) કંકોત્રી.',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
-    tag: 'Timeless Classic',
-    paletteName: 'Warm Linen · Antique Gold · Espresso',
-  },
-  {
-    id: 'minimal',
-    title: 'Sérénité',
-    subtitle: 'Generous Whitespace & Editorial Restraint',
-    description:
-      'High-fashion minimalism inspired by modern editorial monographs. Quiet letterspacing, delicate rules, and unhurried elegance.',
-    image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80',
-    tag: 'Architectural Minimal',
-    paletteName: 'Onyx · Pure White · Soft Gray',
-  },
-  {
-    id: 'sage',
-    title: 'Sauge Royale',
-    subtitle: 'Sage Foliage & Botanical Blind Deboss',
-    description:
-      'Muted sage green watercolor textures, delicate eucalyptus leaf silhouettes, and soft deckle-edge paper borders for destination celebrations.',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
-    tag: 'Botanical Garden',
-    paletteName: 'Sage Leaf · Natural Cream · Champagne',
+    tag: 'આધુનિક ડિઝાઇન (Modern Luxury)',
+    paletteName: 'આઇવરી સિલ્ક · ગોલ્ડ ફોઇલ · મરૂન',
   },
 ];
 
@@ -71,78 +55,81 @@ export function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#2C2724] font-sans antialiased selection:bg-[#EFE6D8]">
-      {/* Refined Stationery Header */}
-      <header className="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between border-b border-[#EDE5DA]">
-        <div className="flex flex-col">
-          <span className="font-display text-2xl sm:text-3xl tracking-wider text-[#231F1D]">
-            Vivaah
-          </span>
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[#8C827A] mt-0.5">
-            Atelier de Papeterie Digitale
-          </span>
+    <div className="min-h-screen bg-[#FAF6F0] text-[#2C211E] font-sans antialiased selection:bg-[#F3D7B5]">
+      {/* Top Auspicious Header */}
+      <header className="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between border-b border-[#E8D4B0]">
+        <div className="flex items-center gap-3">
+          <GaneshaEmblem className="w-10 h-10" color="#8C2323" />
+          <div>
+            <span className="font-serif font-bold text-xl sm:text-2xl tracking-wide text-[#8C2323] block leading-tight">
+              શુભ લગ્ન કંકોત્રી
+            </span>
+            <span className="text-[10px] tracking-[0.25em] uppercase text-[#7A6B56] block font-serif">
+              Gujarati Digital Wedding Invitations
+            </span>
+          </div>
         </div>
 
         <button
           onClick={() => handleOpenPreview(TEMPLATES[0])}
-          className="px-4 py-2 rounded-full text-xs font-medium tracking-wider uppercase text-[#453E3A] border border-[#D5C7B5] hover:border-[#2C2724] hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer"
+          className="px-4 py-2 rounded-full text-xs font-serif font-semibold text-[#8C2323] border border-[#8C2323]/30 hover:bg-[#8C2323] hover:text-white transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
         >
-          <Play className="w-3 h-3 text-[#C8A97E] fill-[#C8A97E]" />
-          <span>Live Demo</span>
+          <Play className="w-3 h-3 text-[#D4AF37] fill-[#D4AF37]" />
+          <span>ડેમો જુઓ (Live Demo)</span>
         </button>
       </header>
 
-      {/* Editorial Hero */}
-      <section className="max-w-3xl mx-auto px-6 pt-16 pb-20 text-center">
-        <span className="text-[11px] font-sans tracking-[0.3em] uppercase text-[#8C827A] block mb-4">
-          Digital Wedding Stationery
+      {/* Hero Section */}
+      <section className="max-w-3xl mx-auto px-6 pt-12 pb-14 text-center">
+        <span className="text-xs font-serif font-semibold text-[#8C2323] uppercase tracking-widest block mb-3">
+          || શ્રી ગણેશાય નમઃ ||
         </span>
 
-        <h1 className="text-4xl sm:text-6xl font-display text-[#231F1D] tracking-tight leading-[1.15] mb-6">
-          Unpretentious, serene, and refined digital invitations.
+        <h1 className="text-3xl sm:text-5xl font-serif font-bold text-[#8C2323] tracking-tight leading-tight mb-4">
+          તમારા રૂડા અવસરની સુંદર ડિજિટલ કંકોત્રી.
         </h1>
 
-        <p className="max-w-xl mx-auto text-sm sm:text-base text-[#6B635B] font-serif italic leading-relaxed mb-8">
-          Crafted like fine paper stationery with embossed botanical covers, gentle acoustic melodies,
-          and a tranquil flow tailored for WhatsApp sharing.
+        <p className="max-w-xl mx-auto text-sm sm:text-base text-[#5D4E3E] font-serif leading-relaxed mb-6">
+          પરંપરાગત શરણાઈના સૂર, ગણેશ સ્થાપના, પીઠી, મામેરું અને રાસ-ગરબાના શુભ પ્રસંગો સાથે
+          WhatsApp પર શેર કરવા માટેની ખાસ ગુજરાતી લગ્ન કંકોત્રી.
         </p>
       </section>
 
-      {/* The Stationery Collection Gallery */}
-      <section className="max-w-5xl mx-auto px-6 pb-24">
-        <div className="text-center mb-12">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[#8C827A] block mb-1">
-            Curated Collection
+      {/* Exactly 2 Gujarati Templates Collection */}
+      <section className="max-w-4xl mx-auto px-6 pb-20">
+        <div className="text-center mb-8">
+          <span className="text-[11px] font-serif uppercase tracking-widest text-[#7A6B56] block mb-1">
+            પસંદગી કરો
           </span>
-          <h2 className="text-2xl sm:text-3xl font-display text-[#231F1D]">
-            Select an Invitation Suite
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#8C2323]">
+            કંકોત્રીની ડિઝાઇન પસંદ કરો
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {TEMPLATES.map((tmpl) => (
             <div
               key={tmpl.id}
-              className="group bg-white rounded-2xl border border-[#EDE5DA] shadow-[0_10px_35px_-10px_rgba(50,40,30,0.05)] overflow-hidden transition-all duration-300 hover:shadow-[0_20px_45px_-10px_rgba(50,40,30,0.1)] flex flex-col justify-between"
+              className="group bg-white rounded-3xl border-2 border-[#EAD8B7] shadow-[0_15px_40px_-10px_rgba(70,50,30,0.1)] overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_-10px_rgba(70,50,30,0.18)] flex flex-col justify-between"
             >
               {/* Image Preview Window */}
               <div
-                className="relative h-64 sm:h-72 overflow-hidden bg-[#FAF7F2] cursor-pointer"
+                className="relative h-64 sm:h-72 overflow-hidden bg-[#FAF6F0] cursor-pointer"
                 onClick={() => handleOpenPreview(tmpl)}
               >
                 <img
                   src={tmpl.image}
                   alt={tmpl.title}
-                  className="w-full h-full object-cover filter contrast-[1.02] transition-transform duration-700 group-hover:scale-104"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-xs border border-[#E8DFD0] text-[10px] uppercase tracking-widest text-[#554C44] font-medium">
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/95 backdrop-blur-xs border border-[#EAD8B7] text-xs font-serif font-bold text-[#8C2323] shadow-xs">
                   {tmpl.tag}
                 </div>
 
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs opacity-95">
-                  <span className="text-[11px] font-sans tracking-wide drop-shadow-sm">
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs">
+                  <span className="text-xs font-serif font-medium drop-shadow-sm">
                     {tmpl.paletteName}
                   </span>
                 </div>
@@ -151,33 +138,33 @@ export function HomePage() {
               {/* Card Details */}
               <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
                 <div>
-                  <span className="text-[10px] tracking-[0.25em] uppercase text-[#C8A97E] block mb-1 font-medium">
+                  <span className="text-xs font-serif font-semibold text-[#C59A44] block mb-1">
                     {tmpl.subtitle}
                   </span>
-                  <h3 className="text-2xl font-display text-[#231F1D] mb-2 font-normal">
-                    {tmpl.title}
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#8C2323] mb-2">
+                    {tmpl.gujaratiTitle}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#6B635B] font-serif italic leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-[#5D4E3E] font-serif leading-relaxed mb-6">
                     {tmpl.description}
                   </p>
                 </div>
 
-                {/* Refined Action Buttons */}
-                <div className="flex items-center gap-3 pt-5 border-t border-[#F2ECE2]">
+                {/* Buttons */}
+                <div className="flex items-center gap-3 pt-5 border-t border-[#F0E2CC]">
                   <button
                     onClick={() => handleOpenPreview(tmpl)}
-                    className="flex-1 py-2.5 rounded-full border border-[#D5C7B5] hover:border-[#2C2724] hover:bg-[#FAF7F2] text-xs font-medium uppercase tracking-wider text-[#453E3A] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="flex-1 py-2.5 rounded-full border border-[#D4AF37] hover:bg-[#FAF6F0] text-xs font-serif font-bold text-[#8C2323] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    <Eye className="w-3.5 h-3.5 text-[#C8A97E]" />
-                    <span>View Suite</span>
+                    <Eye className="w-3.5 h-3.5 text-[#D4AF37]" />
+                    <span>કંકોત્રી જુઓ (Preview)</span>
                   </button>
 
                   <button
                     onClick={() => handleSelectTemplate(tmpl.id)}
-                    className="flex-1 py-2.5 rounded-full bg-[#2C2724] hover:bg-[#453E3A] text-xs font-medium uppercase tracking-wider text-[#FAF7F2] transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
+                    className="flex-1 py-2.5 rounded-full bg-[#8C2323] hover:bg-[#721B1B] text-xs font-serif font-bold text-white transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer"
                   >
-                    <Check className="w-3.5 h-3.5 text-[#C8A97E]" />
-                    <span>Personalize</span>
+                    <Check className="w-3.5 h-3.5 text-[#F9E2AF]" />
+                    <span>પસંદ કરો (Select)</span>
                   </button>
                 </div>
               </div>
@@ -186,23 +173,23 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Understated Editorial Footer */}
-      <footer className="border-t border-[#EDE5DA] py-12 text-center text-xs text-[#8C827A] font-serif italic">
-        <p>Vivaah Atelier • Dedicated to quiet, unpretentious elegance</p>
+      {/* Footer */}
+      <footer className="border-t border-[#E8D4B0] py-8 text-center text-xs text-[#7A6B56] font-serif">
+        <p>શુભ લગ્ન કંકોત્રી • માંગલિક પ્રસંગો માટે પ્રેમપૂર્વક સમર્પિત</p>
       </footer>
 
-      {/* Full-Screen Interactive Preview */}
+      {/* Live Preview Modal */}
       {viewingTemplate && (
         <TemplateViewerModal
           isOpen={Boolean(viewingTemplate)}
           onClose={() => setViewingTemplate(null)}
           templateId={viewingTemplate.id}
-          templateTitle={viewingTemplate.title}
+          templateTitle={viewingTemplate.gujaratiTitle}
           onSelectTemplate={handleSelectTemplate}
         />
       )}
 
-      {/* Simple Personalization Form */}
+      {/* 2-Minute Form Modal */}
       {creatingTemplateId && (
         <QuickCreateModal
           isOpen={Boolean(creatingTemplateId)}

@@ -1,24 +1,15 @@
 import { TemplateProps } from '@/shared/types';
-import { OrchideeTemplate } from './OrchideeTemplate';
-import { BotanicalTemplate } from './BotanicalTemplate';
-import { MinimalistTemplate } from './MinimalistTemplate';
-import { RoyalTemplate } from './RoyalTemplate';
+import { KumkumKankotriTemplate } from './KumkumKankotriTemplate';
+import { PatolaIvoryTemplate } from './PatolaIvoryTemplate';
 
 export function TemplateRenderer({ data, previewMode = false }: TemplateProps) {
-  const templateId = data.theme?.templateId || 'orchidee';
+  const templateId = data.theme?.templateId || 'kumkum-kankotri';
 
   switch (templateId) {
-    case 'elysee':
-    case 'royal':
-      return <RoyalTemplate data={data} previewMode={previewMode} />;
-    case 'minimal':
-    case 'minimalist' as any:
-      return <MinimalistTemplate data={data} previewMode={previewMode} />;
-    case 'sage':
-    case 'botanical' as any:
-      return <BotanicalTemplate data={data} previewMode={previewMode} />;
-    case 'orchidee':
+    case 'patola-ivory':
+      return <PatolaIvoryTemplate data={data} previewMode={previewMode} />;
+    case 'kumkum-kankotri':
     default:
-      return <OrchideeTemplate data={data} previewMode={previewMode} />;
+      return <KumkumKankotriTemplate data={data} previewMode={previewMode} />;
   }
 }
