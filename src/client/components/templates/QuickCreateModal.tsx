@@ -54,14 +54,18 @@ export function QuickCreateModal({
 
   // Music & Gifting
   const [musicTitle, setMusicTitle] = useState(
-    selectedTemplateId === 'royal-grace'
+    selectedTemplateId === 'mountain'
+      ? 'Himalayan Santoor & Flute Symphony'
+      : selectedTemplateId === 'royal-grace'
       ? 'Royal Grace Acoustic Symphony'
       : selectedTemplateId === 'the-sacred-garden'
       ? 'Ludovico Einaudi — Divenire'
       : 'Mangal Shehnai & Wedding Symphony'
   );
   const [musicUrl, setMusicUrl] = useState(
-    selectedTemplateId === 'royal-grace'
+    selectedTemplateId === 'mountain'
+      ? '/templates/mountain/soundtrack.mp3'
+      : selectedTemplateId === 'royal-grace'
       ? 'https://zareqia.com/__l5e/assets-v1/d58c0b7f-ae8f-429c-bb86-d0dee3a95d9b/track3.mp3'
       : selectedTemplateId === 'the-sacred-garden'
       ? '/templates/the-sacred-garden/soundtrack.mp3'

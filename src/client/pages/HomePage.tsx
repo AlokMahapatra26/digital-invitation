@@ -17,14 +17,14 @@ interface TemplateCardData {
 
 const TEMPLATES: TemplateCardData[] = [
   {
-    id: 'royal-grace',
-    title: 'Royal Grace',
-    subtitle: 'Video Intro • Interactive Scratch Foil Card • Olive Linen Luxury',
+    id: 'mountain',
+    title: 'Himalayan Mountain',
+    subtitle: 'Indian Destination Wedding • Misty Pines • Savoy Mussoorie',
     description:
-      'Cinematic video intro, interactive canvas scratch-to-reveal Save The Date card, program itinerary, dress code, and RSVP.',
-    image: 'https://zareqia.com/__l5e/assets-v1/5dfd7a80-483d-4a6d-860d-da3e341fa151/royal-grace-welcome-bg.jpg',
-    tag: 'Viral Interactive',
-    paletteName: 'Olive Sage · Warm Linen · Heritage Gold',
+      'Serene mountain landscape artwork, Ganesh invocation, multi-event timeline, venue route maps, weather & staff essentials, countdown, and RSVP.',
+    image: '/templates/mountain/hero_mountain.png',
+    tag: 'Destination Luxury',
+    paletteName: 'Pine Forest · Linen Ivory · Terracotta',
   },
   {
     id: 'the-sacred-garden',
@@ -35,6 +35,16 @@ const TEMPLATES: TemplateCardData[] = [
     image: 'https://static.tildacdn.net/tild3532-3566-4962-b739-616664393337/Screenshot_2026-06-2.png',
     tag: 'Signature Experience',
     paletteName: 'Warm Parchment · Burgundy · Heritage Gold',
+  },
+  {
+    id: 'royal-grace',
+    title: 'Royal Grace',
+    subtitle: 'Video Intro • Interactive Scratch Foil Card • Olive Linen Luxury',
+    description:
+      'Cinematic video intro, interactive canvas scratch-to-reveal Save The Date card, program itinerary, dress code, and RSVP.',
+    image: 'https://zareqia.com/__l5e/assets-v1/5dfd7a80-483d-4a6d-860d-da3e341fa151/royal-grace-welcome-bg.jpg',
+    tag: 'Viral Interactive',
+    paletteName: 'Olive Sage · Warm Linen · Heritage Gold',
   },
 ];
 
@@ -62,7 +72,7 @@ export function HomePage() {
               Shubh Vivah
             </span>
             <span className="text-[10px] tracking-[0.25em] uppercase text-[#7A6B56] block font-serif">
-              Gujarati Digital Wedding Invitations
+              Royal & Destination Digital Wedding Invitations
             </span>
           </div>
         </div>
@@ -79,13 +89,13 @@ export function HomePage() {
         </h1>
 
         <p className="max-w-xl mx-auto text-sm sm:text-base text-[#5D4E3E] font-serif leading-relaxed mb-6">
-          Soulful Shehnai melodies, Mandap Muhurat, Pithi, Mameru, Raas-Garba, and Hastamelap
+          Soulful Shehnai melodies, traditional auspicious ceremonies, and heartfelt celebrations
           tailored for effortless WhatsApp sharing.
         </p>
       </section>
 
-      {/* Exactly 2 Gujarati Templates Collection */}
-      <section className="max-w-4xl mx-auto px-6 pb-20">
+      {/* Featured Templates Collection */}
+      <section className="max-w-6xl mx-auto px-6 pb-20">
         <div className="text-center mb-8">
           <span className="text-[11px] font-serif uppercase tracking-widest text-[#7A6B56] block mb-1">
             Curated Collection
@@ -95,7 +105,7 @@ export function HomePage() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {TEMPLATES.map((tmpl) => (
             <div
               key={tmpl.id}
