@@ -3,6 +3,7 @@
 export type TemplateId =
   | 'amber'
   | 'ever-after-bloom'
+  | 'opal-romance'
   | 'mountain'
   | 'royal-grace'
   | 'the-sacred-garden'

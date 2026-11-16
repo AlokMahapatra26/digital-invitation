@@ -34,6 +34,13 @@ import { TemplateRenderer } from '@/client/components/templates/TemplateRenderer
 
 const TEMPLATE_OPTIONS: { id: TemplateId; name: string; tag: string; musicTitle: string; musicUrl: string }[] = [
   {
+    id: 'opal-romance',
+    name: 'Opal Romance',
+    tag: 'Garden Royalty',
+    musicTitle: 'Opal Palace Garden Romance Symphony',
+    musicUrl: '/templates/opal-romance/soundtrack.mp3',
+  },
+  {
     id: 'amber',
     name: 'Sunehri / Amber',
     tag: 'Royal Heritage',

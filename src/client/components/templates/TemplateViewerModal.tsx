@@ -27,6 +27,7 @@ export function TemplateViewerModal({
   const [hasOpenedEnvelope, setHasOpenedEnvelope] = useState(false);
 
   const isSelfContained =
+    templateId === 'opal-romance' ||
     templateId === 'amber' ||
     templateId === 'ever-after-bloom' ||
     templateId === 'mountain' ||
@@ -39,7 +40,9 @@ export function TemplateViewerModal({
       ...SAMPLE_INVITATION.theme,
       templateId,
       backgroundMusicUrl:
-        templateId === 'amber'
+        templateId === 'opal-romance'
+          ? '/templates/opal-romance/soundtrack.mp3'
+          : templateId === 'amber'
           ? '/templates/amber/music-placeholder.mp3'
           : templateId === 'ever-after-bloom'
           ? '/templates/ever-after-bloom/soundtrack.mp3'
@@ -51,7 +54,9 @@ export function TemplateViewerModal({
           ? '/templates/the-sacred-garden/soundtrack.mp3'
           : SAMPLE_INVITATION.theme.backgroundMusicUrl,
       musicTitle:
-        templateId === 'amber'
+        templateId === 'opal-romance'
+          ? 'Opal Palace Garden Romance Symphony'
+          : templateId === 'amber'
           ? 'Sunehri Candlelit Symphony'
           : templateId === 'ever-after-bloom'
           ? 'Amrit Mahal Dawn Symphony'

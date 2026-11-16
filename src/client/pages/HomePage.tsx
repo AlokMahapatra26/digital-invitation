@@ -18,6 +18,16 @@ interface TemplateCardData {
 
 const TEMPLATES: TemplateCardData[] = [
   {
+    id: 'opal-romance',
+    title: 'Opal Romance',
+    subtitle: 'Blush Palace Garden • Rose-Covered Gates • Candlelit Pavilion',
+    description:
+      'Opens through rose-covered palace gates into a candlelit pavilion, couple holding hands in baroque golden frames, royal ceremonies in red arched cards, and a blossoming tree finale.',
+    image: '/templates/opal-romance/preview.webp',
+    tag: 'Garden Royalty',
+    paletteName: 'Blush Pink · Royal Crimson · Heritage Gold',
+  },
+  {
     id: 'amber',
     title: 'Sunehri / Amber',
     subtitle: 'Cinematic Video Reveal • Canvas Scratch Card • Candlelit Editorial',
