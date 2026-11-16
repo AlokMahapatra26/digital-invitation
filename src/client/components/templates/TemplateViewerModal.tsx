@@ -38,7 +38,7 @@ export function TemplateViewerModal({
         templateId === 'royal-grace'
           ? 'https://zareqia.com/__l5e/assets-v1/d58c0b7f-ae8f-429c-bb86-d0dee3a95d9b/track3.mp3'
           : templateId === 'the-sacred-garden'
-          ? 'https://pub-4dc8201144ca418fb604349c73e8c724.r2.dev/Einaudi_%20Divenire%20(1)%20(1).mp3'
+          ? '/templates/the-sacred-garden/soundtrack.mp3'
           : SAMPLE_INVITATION.theme.backgroundMusicUrl,
       musicTitle:
         templateId === 'royal-grace'

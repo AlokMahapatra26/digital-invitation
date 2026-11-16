@@ -1050,3 +1050,4 @@ export function RoyalGraceTemplate({ data, previewMode = false }: TemplateProps)
     </div>
   );
 }
+

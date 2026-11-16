@@ -25,6 +25,13 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
   // Audio & Video Refs
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const swansVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (swansVideoRef.current) {
+      swansVideoRef.current.play().catch(() => {});
+    }
+  }, [isIntroComplete]);
 
   // Modals
   const [isRsvpOpen, setIsRsvpOpen] = useState(false);
@@ -78,7 +85,7 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
   // Audio source: Sacred Garden signature soundtrack (Einaudi - Divenire) or customized
   const audioSrc =
     data.theme?.backgroundMusicUrl ||
-    'https://pub-4dc8201144ca418fb604349c73e8c724.r2.dev/Einaudi_%20Divenire%20(1)%20(1).mp3';
+    '/templates/the-sacred-garden/soundtrack.mp3';
 
   // Handle Envelope Open Sequence
   const handleOpenEnvelope = () => {
@@ -245,7 +252,7 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
             <div className="relative max-w-[440px] w-full flex flex-col items-center justify-center">
               {/* Realistic Envelope Image */}
               <img
-                src="https://assets.webgencyinvitations.com/ChatGPT_Image_Jun_23_2026_04_40_29_PM_4_piptqn%20(2).png"
+                src="/templates/the-sacred-garden/envelope.png"
                 alt="Envelope"
                 className="w-full max-w-[420px] object-contain drop-shadow-xl select-none pointer-events-none"
               />
@@ -272,7 +279,7 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
       >
         <video
           ref={videoRef}
-          src="https://assets.webgencyinvitations.com/1782224012851_1_m6ww6v.mp4"
+          src="/templates/the-sacred-garden/envelope_opening.mp4"
           muted
           playsInline
           onTimeUpdate={handleVideoTimeUpdate}
@@ -309,7 +316,9 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
         <section className="relative w-full overflow-hidden rounded-2xl mb-12 shadow-md border border-[#E8D4B0]/60">
           <div className="relative aspect-[16/11] sm:aspect-[16/10] w-full overflow-hidden bg-[#2D3319]">
             <video
-              src="https://assets.webgencyinvitations.com/Swans2_1_qwzsod.mov"
+              ref={swansVideoRef}
+              src="/templates/the-sacred-garden/swans.mp4"
+              poster="/templates/the-sacred-garden/swans_poster.jpg"
               autoPlay
               loop
               muted
@@ -317,7 +326,7 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
               className="w-full h-full object-cover scale-105"
             />
             {/* Subtle soft vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#F9F0E0] via-transparent to-transparent opacity-40 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#F9F0E0]/40 via-transparent to-transparent pointer-events-none" />
           </div>
         </section>
 
