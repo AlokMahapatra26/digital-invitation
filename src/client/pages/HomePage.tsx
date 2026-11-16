@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { Eye, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Eye, Check, LogIn, LayoutDashboard, User as UserIcon } from 'lucide-react';
 import { TemplateId } from '@/shared/types';
 import { TemplateViewerModal } from '@/client/components/templates/TemplateViewerModal';
 import { QuickCreateModal } from '@/client/components/templates/QuickCreateModal';
 import { GaneshaEmblem } from '@/client/components/common/GaneshaEmblem';
+import { useAuth } from '@/client/context/AuthContext';
 
 interface TemplateCardData {
   id: TemplateId;
@@ -49,6 +51,7 @@ const TEMPLATES: TemplateCardData[] = [
 ];
 
 export function HomePage() {
+  const { user, openAuthModal } = useAuth();
   const [viewingTemplate, setViewingTemplate] = useState<TemplateCardData | null>(null);
   const [creatingTemplateId, setCreatingTemplateId] = useState<TemplateId | null>(null);
 
@@ -64,7 +67,7 @@ export function HomePage() {
   return (
     <div className="min-h-screen bg-[#FAF6F0] text-[#2C211E] font-sans antialiased selection:bg-[#F3D7B5]">
       {/* Top Auspicious Header */}
-      <header className="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between border-b border-[#E8D4B0]">
+      <header className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between border-b border-[#E8D4B0]">
         <div className="flex items-center gap-3">
           <GaneshaEmblem className="w-10 h-10" color="#8C2323" />
           <div>
@@ -75,6 +78,29 @@ export function HomePage() {
               Royal & Destination Digital Wedding Invitations
             </span>
           </div>
+        </div>
+
+        {/* Auth / Dashboard Controls */}
+        <div className="flex items-center gap-3">
+          {user ? (
+            <Link
+              to="/dashboard"
+              className="px-4 py-2 rounded-full bg-[#8C2323] hover:bg-[#681818] text-white text-xs font-serif font-semibold transition-all inline-flex items-center gap-1.5 shadow-xs"
+            >
+              <LayoutDashboard className="w-3.5 h-3.5" />
+              <span>My Invitations</span>
+            </Link>
+          ) : (
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => openAuthModal('login')}
+                className="px-4 py-2 rounded-full text-xs font-serif font-semibold text-[#8C2323] border border-[#8C2323]/30 hover:bg-[#8C2323] hover:text-white transition-all cursor-pointer shadow-xs inline-flex items-center gap-1.5"
+              >
+                <LogIn className="w-3.5 h-3.5" />
+                <span>Sign In</span>
+              </button>
+            </div>
+          )}
         </div>
       </header>
 

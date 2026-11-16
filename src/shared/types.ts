@@ -61,6 +61,7 @@ export interface ThemeConfig {
 export interface WeddingInvitation {
   id: string;
   slug: string;
+  userId?: string;
   couple: CoupleDetails;
   tagline: string;
   gujaratiShlok?: string;
@@ -104,4 +105,18 @@ export interface WishRecord {
 export interface TemplateProps {
   data: WeddingInvitation;
   previewMode?: boolean;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  name: string;
+  avatarUrl?: string;
+  role?: 'user' | 'admin';
+  createdAt?: string;
+}
+
+export interface AuthResponse {
+  user: User;
+  token: string;
 }

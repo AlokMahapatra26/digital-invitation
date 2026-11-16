@@ -22,11 +22,15 @@ wedding-invitation/
 │   └── API.md
 ├── wrangler.jsonc               # Cloudflare configuration (D1, R2, KV bindings)
 ├── migrations/                  # D1 SQL schemas
-│   └── 0001_init.sql
+│   ├── 0001_init.sql
+│   └── 0002_auth.sql
 ├── src/
 │   ├── server/                  # Cloudflare Workers / Hono API
 │   │   ├── index.ts             # Hono app entry point
+│   │   ├── lib/
+│   │   │   └── crypto.ts        # Edge-native Web Crypto SHA-256 + HMAC JWT
 │   │   ├── routes/              # Modular API routes
+│   │   │   ├── auth.ts          # Register, Login, Me, My-Invitations
 │   │   │   ├── invitations.ts   # CRUD operations for invitations
 │   │   │   ├── rsvp.ts          # RSVP management and counters
 │   │   │   └── wishes.ts        # Guestbook live wishes

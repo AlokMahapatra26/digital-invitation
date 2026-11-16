@@ -13,11 +13,13 @@ import {
   Image as ImageIcon,
   Music,
   Users,
+  LayoutDashboard,
 } from 'lucide-react';
 import { TemplateId, WeddingInvitation, WeddingEvent } from '@/shared/types';
 import { SAMPLE_INVITATION } from '@/shared/defaults';
 import { saveInvitation } from '@/client/lib/api';
 import { useConfetti } from '@/client/hooks/useConfetti';
+import { useAuth } from '@/client/context/AuthContext';
 
 interface QuickCreateModalProps {
   isOpen: boolean;
@@ -77,6 +79,7 @@ export function QuickCreateModal({
   const [createdUrl, setCreatedUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
+  const { user, openAuthModal } = useAuth();
   const { shootPetals } = useConfetti();
 
   const brideFileRef = useRef<HTMLInputElement>(null);
@@ -156,6 +159,7 @@ export function QuickCreateModal({
       ...SAMPLE_INVITATION,
       id: `inv-${Date.now()}`,
       slug: generatedSlug,
+      userId: user?.id,
       couple: {
         bride: {
           name: brideName,
@@ -287,6 +291,25 @@ export function QuickCreateModal({
                     <span>Share on WhatsApp</span>
                   </a>
                 </div>
+
+                {user ? (
+                  <a
+                    href="/dashboard"
+                    className="w-full py-2.5 rounded-xl border border-[#E8D4B0] bg-[#FAF6F0] hover:bg-[#EFE2CC] text-[#8C2323] font-serif font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-1.5 transition-colors mt-3"
+                  >
+                    <LayoutDashboard className="w-3.5 h-3.5" />
+                    <span>Go to My Dashboard</span>
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => openAuthModal('register')}
+                    className="w-full py-2.5 rounded-xl border border-[#E8D4B0] bg-[#FAF6F0] hover:bg-[#EFE2CC] text-[#8C2323] font-serif font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-1.5 transition-colors mt-3 cursor-pointer"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+                    <span>Create Free Account to Save & Manage RSVPs</span>
+                  </button>
+                )}
               </div>
             ) : (
               /* Multi-Tab Detailed Customizer Form */

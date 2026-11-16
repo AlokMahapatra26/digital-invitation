@@ -4,6 +4,7 @@ import { Bindings } from './types/env';
 import { invitationsRoute } from './routes/invitations';
 import { rsvpRoute } from './routes/rsvp';
 import { wishesRoute } from './routes/wishes';
+import { authRoute } from './routes/auth';
 
 const app = new Hono<{ Bindings: Bindings }>();
 
@@ -14,6 +15,7 @@ app.use('/api/*', cors());
 app.get('/api/health', (c) => c.json({ status: 'ok', runtime: 'cloudflare-worker', time: new Date().toISOString() }));
 
 // Mount Modular Routes
+app.route('/api/auth', authRoute);
 app.route('/api/invitations', invitationsRoute);
 app.route('/api/rsvp', rsvpRoute);
 app.route('/api/wishes', wishesRoute);
