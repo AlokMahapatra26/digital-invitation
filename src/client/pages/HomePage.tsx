@@ -17,24 +17,24 @@ interface TemplateCardData {
 
 const TEMPLATES: TemplateCardData[] = [
   {
+    id: 'royal-grace',
+    title: 'Royal Grace',
+    subtitle: 'Video Intro • Interactive Scratch Foil Card • Olive Linen Luxury',
+    description:
+      'Cinematic video intro, interactive canvas scratch-to-reveal Save The Date card, program itinerary, dress code, and RSVP.',
+    image: 'https://zareqia.com/__l5e/assets-v1/5dfd7a80-483d-4a6d-860d-da3e341fa151/royal-grace-welcome-bg.jpg',
+    tag: 'Viral Interactive',
+    paletteName: 'Olive Sage · Warm Linen · Heritage Gold',
+  },
+  {
     id: 'the-sacred-garden',
     title: 'The Sacred Garden',
     subtitle: 'Interactive Wax Seal Envelope • Swans Video • Einaudi Soundtrack',
     description:
-      'Exact stationery luxury with interactive tap-to-open envelope, flap video transition, serene looping swans banner, countdown clock, and RSVP.',
+      'Stationery luxury with interactive tap-to-open envelope, flap video transition, serene looping swans banner, countdown clock, and RSVP.',
     image: 'https://static.tildacdn.net/tild3532-3566-4962-b739-616664393337/Screenshot_2026-06-2.png',
     tag: 'Signature Experience',
     paletteName: 'Warm Parchment · Burgundy · Heritage Gold',
-  },
-  {
-    id: 'kumkum-kankotri',
-    title: 'Royal Kumkum Kankotri',
-    subtitle: '|| Shree Ganeshaya Namah || • Traditional Royal Heritage',
-    description:
-      'Auspicious Kumkum crimson with regal Jari gold foil borders. Features Ganesha Sthapana, Pithi, Mameru, Raas-Garba, and Hastamelap ceremonies.',
-    image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80',
-    tag: 'Traditional Classic',
-    paletteName: 'Kumkum Crimson · Jari Gold · Saffron',
   },
 ];
 

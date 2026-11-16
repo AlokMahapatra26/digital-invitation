@@ -26,17 +26,24 @@ export function TemplateViewerModal({
 }: TemplateViewerModalProps) {
   const [hasOpenedEnvelope, setHasOpenedEnvelope] = useState(false);
 
+  const isSelfContained =
+    templateId === 'royal-grace' || templateId === 'the-sacred-garden';
+
   const previewData: WeddingInvitation = {
     ...SAMPLE_INVITATION,
     theme: {
       ...SAMPLE_INVITATION.theme,
       templateId,
       backgroundMusicUrl:
-        templateId === 'the-sacred-garden'
+        templateId === 'royal-grace'
+          ? 'https://zareqia.com/__l5e/assets-v1/d58c0b7f-ae8f-429c-bb86-d0dee3a95d9b/track3.mp3'
+          : templateId === 'the-sacred-garden'
           ? 'https://pub-4dc8201144ca418fb604349c73e8c724.r2.dev/Einaudi_%20Divenire%20(1)%20(1).mp3'
           : SAMPLE_INVITATION.theme.backgroundMusicUrl,
       musicTitle:
-        templateId === 'the-sacred-garden'
+        templateId === 'royal-grace'
+          ? 'Royal Grace Acoustic Symphony'
+          : templateId === 'the-sacred-garden'
           ? 'Ludovico Einaudi — Divenire'
           : SAMPLE_INVITATION.theme.musicTitle,
     },
@@ -103,7 +110,7 @@ export function TemplateViewerModal({
 
           {/* Interactive Preview Container */}
           <div className="flex-1 overflow-y-auto relative">
-            {templateId !== 'the-sacred-garden' && !hasOpenedEnvelope && (
+            {!isSelfContained && !hasOpenedEnvelope && (
               <EnvelopeOpening
                 sealText={previewData.theme.envelopeSealText || '|| SHREE ||'}
                 coupleNames={`${previewData.couple.bride.name} & ${previewData.couple.groom.name}`}
@@ -115,7 +122,7 @@ export function TemplateViewerModal({
 
             <TemplateRenderer data={previewData} previewMode={false} />
 
-            {templateId !== 'the-sacred-garden' && hasOpenedEnvelope && (
+            {!isSelfContained && hasOpenedEnvelope && (
               <AudioPlayerWidget
                 isPlaying={isPlaying}
                 isMuted={isMuted}

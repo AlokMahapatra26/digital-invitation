@@ -11,18 +11,23 @@ The platform empowers couples to:
 
 ## 2. Core User Personas & Flows
 
-### Curated Active Templates (Exactly 2 Designs)
-1. **The Sacred Garden (`the-sacred-garden`)**:
-   - Exact replica of the high-end stationery template from `https://webgencyinvitations.com/thesacredgarden`.
+### Curated Active Templates
+1. **Royal Grace (`royal-grace`)**:
+   - Exact replica of the viral luxury invitation from `https://zareqia.com/invite/demo?template=royal-grace`.
+   - **Video Hero Opening**: Fullscreen video intro (`demo-v3-royal-grace.mp4`) with tap-to-open gesture, auto-unmuting background soundtrack (`track3.mp3`).
+   - **Animated Couple Reveal**: Leaf emblem, "We Are Getting Married", Groom & Bride names in calligraphic `Dancing Script`, parent names, and animated bounce scroll cue.
+   - **Seamless Linen Backgrounds**: Authentic layered artwork (`royal-grace-welcome-bg.jpg`, `royal-grace-general-bg.jpg`, `royal-grace-end-bg.jpg`) in olive sage (`#3E5634`) and warm cream.
+   - **Interactive Canvas Scratch Card**: Real HTML5 foil scratch card where guests swipe/scratch with finger to reveal the Save The Date, complete with confetti burst and Google Calendar sync.
+   - **Program Timeline & Guidance**: Itinerary, Venue Google Maps, Dress Code (Men & Women), Accommodations, Transportation shuttles, Gift preference & UPI, RSVP modal, and Guestbook.
+2. **The Sacred Garden (`the-sacred-garden`)**:
+   - Exact replica of the stationery template from `https://webgencyinvitations.com/thesacredgarden`.
    - **Interactive Envelope Overlay (`#weiOverlay`)**: Warm cream background (`#F9F0E0`), realistic physical envelope image, pulsing "TAP TO OPEN" prompt with animated chevron.
    - **Flap Opening Transition Video (`#weiVideoWrap`)**: Smooth opening animation (`1782224012851_1_m6ww6v.mp4`) that fades out 0.8s before finishing.
-   - **Soundtrack**: Ludovico Einaudi - *Divenire* looping in background.
-   - **Floating Audio Control**: Circular `#5A0F1B` deep maroon button at bottom right (60px) with play/pause icons.
+   - **Soundtrack**: Ludovico Einaudi - *Divenire* looping in background with `#5A0F1B` floating audio widget.
    - **Cinematic Looping Banner**: Serene white swans swimming on water (`Swans2_1_qwzsod.mov`).
-   - **Typography & Theme**: Authentic `Cinzel` serif titles, `Ovo` body copy, floral arch dividers, countdown clock, timeline schedule, Google Maps link, dress code, and interactive RSVP modal.
-2. **Royal Kumkum Kankotri (`kumkum-kankotri`)**:
+   - **Typography & Theme**: Authentic `Cinzel` serif titles, `Ovo` body copy, countdown clock, timeline schedule, Google Maps link, dress code, and interactive RSVP modal.
+3. **Royal Kumkum Kankotri (`kumkum-kankotri`)**:
    - Traditional Gujarati crimson (`#5E0D0D`) and Jari gold foil borders.
-   - All text in English with auspicious invocations (|| Shree Ganeshaya Namah ||).
    - Full ceremony timeline (Mandap Muhurat, Pithi, Mameru, Raas-Garba, Hastamelap, Reception).
 
 ### A. The Invitee / Guest Flow
