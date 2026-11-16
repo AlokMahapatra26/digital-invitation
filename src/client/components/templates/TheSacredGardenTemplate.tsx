@@ -16,22 +16,14 @@ import {
 import { TemplateProps, RSVPRecord, WishRecord } from '@/shared/types';
 
 export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateProps) {
-  // Intro Envelope & Opening Animation State
-  const [hasStarted, setHasStarted] = useState(false);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [isIntroComplete, setIsIntroComplete] = useState(false);
+  // Intro Envelope & Opening Animation State: 'envelope' | 'video' | 'fading' | 'ready'
+  const [introStep, setIntroStep] = useState<'envelope' | 'video' | 'fading' | 'ready'>('envelope');
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
 
   // Audio & Video Refs
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const swansVideoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    if (swansVideoRef.current) {
-      swansVideoRef.current.play().catch(() => {});
-    }
-  }, [isIntroComplete]);
 
   // Modals
   const [isRsvpOpen, setIsRsvpOpen] = useState(false);
@@ -82,6 +74,13 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
     return () => clearInterval(interval);
   }, [weddingDateStr]);
 
+  // Autoplay swans video on mount and when ready
+  useEffect(() => {
+    if (swansVideoRef.current) {
+      swansVideoRef.current.play().catch(() => {});
+    }
+  }, [introStep]);
+
   // Audio source: Sacred Garden signature soundtrack (Einaudi - Divenire) or customized
   const audioSrc =
     data.theme?.backgroundMusicUrl ||
@@ -89,8 +88,8 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
 
   // Handle Envelope Open Sequence
   const handleOpenEnvelope = () => {
-    if (hasStarted) return;
-    setHasStarted(true);
+    if (introStep !== 'envelope') return;
+    setIntroStep('video');
 
     // 1. Play Background Music
     if (audioRef.current) {
@@ -102,37 +101,38 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
       });
     }
 
-    // 2. Play Flap Opening Transition Video
-    setIsVideoPlaying(true);
+    // 2. Play Flap Opening Transition Video (4.8s duration)
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
-      videoRef.current.play().catch((e) => {
-        console.log('Video autoplay prevented:', e);
-        // Fallback: direct to intro complete
+      videoRef.current.play().catch(() => {
+        // Fallback after 4.5s
         setTimeout(() => {
-          setIsIntroComplete(true);
-          setIsVideoPlaying(false);
-        }, 1200);
+          setIntroStep('ready');
+        }, 4500);
       });
     }
   };
 
-  // Video timeupdate to fade out 0.8s before video finishes
+  // Video timeupdate: only start fading once the flap is fully open (at 4.2s out of 4.8s)
   const handleVideoTimeUpdate = () => {
     if (videoRef.current) {
       const v = videoRef.current;
-      if (v.duration && v.currentTime >= v.duration - 0.8 && !isIntroComplete) {
-        setIsIntroComplete(true);
+      if (v.duration && v.currentTime >= 4.2 && introStep === 'video') {
+        setIntroStep('fading');
         setTimeout(() => {
-          setIsVideoPlaying(false);
-        }, 800);
+          setIntroStep('ready');
+        }, 1200);
       }
     }
   };
 
   const handleVideoEnded = () => {
-    setIsIntroComplete(true);
-    setIsVideoPlaying(false);
+    if (introStep !== 'ready') {
+      setIntroStep('fading');
+      setTimeout(() => {
+        setIntroStep('ready');
+      }, 1200);
+    }
   };
 
   const toggleMusic = () => {
@@ -242,7 +242,7 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
           1. INTRO: TAP TO OPEN ENVELOPE OVERLAY (#weiOverlay)
       ───────────────────────────────────────────────────────────── */}
       <AnimatePresence>
-        {!hasStarted && (
+        {introStep === 'envelope' && (
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.9, ease: 'easeInOut' } }}
@@ -270,28 +270,30 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
       </AnimatePresence>
 
       {/* ─────────────────────────────────────────────────────────────
-          2. INTRO TRANSITION VIDEO (#weiVideoWrap)
+          2. INTRO TRANSITION VIDEO (Fully plays opening flap)
       ───────────────────────────────────────────────────────────── */}
-      <div
-        className={`fixed inset-0 z-[99998] flex items-center justify-center bg-[#F9F0E0] pointer-events-none transition-opacity duration-1000 ${
-          isVideoPlaying && !isIntroComplete ? 'opacity-100' : 'opacity-0 hidden'
-        }`}
-      >
-        <video
-          ref={videoRef}
-          src="/templates/the-sacred-garden/envelope_opening.mp4"
-          muted
-          playsInline
-          onTimeUpdate={handleVideoTimeUpdate}
-          onEnded={handleVideoEnded}
-          className="w-full max-w-[440px] object-contain"
-        />
-      </div>
+      {introStep !== 'ready' && introStep !== 'envelope' && (
+        <div
+          className={`fixed inset-0 z-[99998] flex items-center justify-center bg-[#F9F0E0] pointer-events-none transition-opacity duration-1000 ${
+            introStep === 'fading' ? 'opacity-0' : 'opacity-100'
+          }`}
+        >
+          <video
+            ref={videoRef}
+            src="/templates/the-sacred-garden/envelope_opening.mp4"
+            muted
+            playsInline
+            onTimeUpdate={handleVideoTimeUpdate}
+            onEnded={handleVideoEnded}
+            className="w-full max-w-[440px] object-contain drop-shadow-2xl"
+          />
+        </div>
+      )}
 
       {/* ─────────────────────────────────────────────────────────────
           3. FLOATING MUSIC TOGGLE BUTTON (#weiAudioBtn)
       ───────────────────────────────────────────────────────────── */}
-      {isIntroComplete && (
+      {(introStep === 'ready' || introStep === 'fading') && (
         <motion.button
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -311,59 +313,82 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
       {/* ─────────────────────────────────────────────────────────────
           4. MAIN SACRED GARDEN INVITATION PAGE
       ───────────────────────────────────────────────────────────── */}
-      <main className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 pb-24 text-center">
-        {/* Looping Swans Video Banner */}
-        <section className="relative w-full overflow-hidden rounded-2xl mb-12 shadow-md border border-[#E8D4B0]/60">
-          <div className="relative aspect-[16/11] sm:aspect-[16/10] w-full overflow-hidden bg-[#2D3319]">
-            <video
-              ref={swansVideoRef}
-              src="/templates/the-sacred-garden/swans.mp4"
-              poster="/templates/the-sacred-garden/swans_poster.jpg"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover scale-105"
-            />
-            {/* Subtle soft vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#F9F0E0]/40 via-transparent to-transparent pointer-events-none" />
+      <main className="max-w-2xl mx-auto px-4 sm:px-6 pt-6 pb-24 text-center">
+        {/* ─────────────────────────────────────────────────────────────
+            HERO CARD: MARBLE ARCH COLUMNS & SWANS VIDEO BEHIND NAMES
+        ───────────────────────────────────────────────────────────── */}
+        <section className="relative w-full max-w-[460px] mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#D4AF37]/40 mb-14 min-h-[700px] sm:min-h-[740px] flex flex-col justify-between items-center text-center p-6 sm:p-8">
+          {/* Looping Swans & Pillars Video Background */}
+          <video
+            ref={swansVideoRef}
+            src="/templates/the-sacred-garden/swans.mp4"
+            poster="/templates/the-sacred-garden/swans_poster.jpg"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover select-none"
+          />
+
+          {/* Soft architectural shading overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F9F0E0]/30 via-transparent to-[#F9F0E0]/40 pointer-events-none" />
+
+          {/* Top Title: WEDDING DAY & AUSPICIOUS DATE */}
+          <div className="relative z-10 pt-4 sm:pt-6 flex flex-col items-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <img
+                src="https://static.tildacdn.net/tild3638-3336-4136-a131-633463346265/left-element_1.png"
+                alt="Ornament"
+                className="w-8 sm:w-10 h-auto opacity-80"
+              />
+              <span className="font-['Cinzel',serif] text-xs sm:text-sm tracking-[0.3em] uppercase text-[#4A382B] font-semibold">
+                Wedding Day
+              </span>
+              <img
+                src="https://static.tildacdn.net/tild6131-6362-4663-b461-626531656438/right-element_1.png"
+                alt="Ornament"
+                className="w-8 sm:w-10 h-auto opacity-80"
+              />
+            </div>
+
+            <div className="inline-block px-4 py-1 rounded-full border border-[#8C643C]/40 bg-[#FAF0E0]/80 backdrop-blur-xs shadow-xs">
+              <span className="font-['Cinzel',serif] text-xs sm:text-sm tracking-[0.22em] text-[#5A0F1B] font-bold">
+                {formattedDate}
+              </span>
+            </div>
+          </div>
+
+          {/* Center Couple Names OVERLAYED ON THE ARCH BACKGROUND */}
+          <div className="relative z-10 my-auto py-6 flex flex-col items-center justify-center">
+            <h1
+              className="font-['Cinzel',serif] text-5xl sm:text-7xl text-[#36281E] tracking-wider font-medium leading-none drop-shadow-xs"
+              style={{ textShadow: '0 2px 12px rgba(249, 240, 224, 0.95)' }}
+            >
+              {groomFirstName}
+            </h1>
+            <div
+              className="font-['Cinzel',serif] text-2xl sm:text-3xl text-[#A67D2B] my-2 sm:my-3 font-light"
+              style={{ textShadow: '0 2px 8px rgba(249, 240, 224, 0.9)' }}
+            >
+              &
+            </div>
+            <h2
+              className="font-['Cinzel',serif] text-5xl sm:text-7xl text-[#36281E] tracking-wider font-medium leading-none drop-shadow-xs"
+              style={{ textShadow: '0 2px 12px rgba(249, 240, 224, 0.95)' }}
+            >
+              {brideFirstName}
+            </h2>
+          </div>
+
+          {/* Bottom Scroll Cue inside the arch */}
+          <div className="relative z-10 pb-2 flex flex-col items-center gap-1 text-[11px] text-[#4A382B] font-['Cinzel',serif] tracking-[0.25em] uppercase font-semibold">
+            <span style={{ textShadow: '0 1px 4px rgba(249, 240, 224, 0.95)' }}>Scroll down</span>
+            <ChevronDown className="w-4 h-4 animate-bounce text-[#5A0F1B]" />
           </div>
         </section>
 
-        {/* Section: Couple Names & Ceremony Date */}
+        {/* Section: Authentic Sacred Poem / Invocation */}
         <section className="mb-14 px-2">
-          {/* Decorative Floral Header */}
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <img
-              src="https://static.tildacdn.net/tild3638-3336-4136-a131-633463346265/left-element_1.png"
-              alt="Ornament"
-              className="w-12 sm:w-16 h-auto opacity-70"
-            />
-            <span className="font-['Cinzel',serif] text-xs sm:text-sm tracking-[0.25em] uppercase text-[#8C643C]">
-              Wedding Day
-            </span>
-            <img
-              src="https://static.tildacdn.net/tild6131-6362-4663-b461-626531656438/right-element_1.png"
-              alt="Ornament"
-              className="w-12 sm:w-16 h-auto opacity-70"
-            />
-          </div>
-
-          <h1 className="font-['Cinzel',serif] text-4xl sm:text-6xl text-[#4A382B] tracking-wide leading-tight mb-2">
-            {groomFirstName}
-          </h1>
-          <div className="font-['Cinzel',serif] text-2xl sm:text-3xl text-[#A67D2B] my-2">&</div>
-          <h2 className="font-['Cinzel',serif] text-4xl sm:text-6xl text-[#4A382B] tracking-wide leading-tight mb-6">
-            {brideFirstName}
-          </h2>
-
-          <div className="inline-block px-5 py-1.5 rounded-full border border-[#D4AF37]/50 bg-[#F3E7D3]/60 mb-8">
-            <span className="font-['Cinzel',serif] text-base sm:text-lg tracking-[0.2em] text-[#5A0F1B] font-semibold">
-              {formattedDate}
-            </span>
-          </div>
-
-          {/* Authentic Sacred Poem / Invocation */}
           <div className="max-w-md mx-auto space-y-1 text-[#6A5140] font-['Ovo',serif] text-base sm:text-lg italic leading-relaxed mb-6">
             <p>Two Souls</p>
             <p>One destiny</p>
@@ -380,11 +405,6 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
               {data.welcomeMessage ||
                 'Join us for an evening of love, laughter, blessings, and unforgettable memories as we begin our forever.'}
             </p>
-          </div>
-
-          <div className="flex flex-col items-center gap-1.5 text-xs text-[#8C643C]/80 font-['Cinzel',serif] tracking-widest pt-2">
-            <span>Scroll down</span>
-            <ChevronDown className="w-4 h-4 animate-bounce text-[#8C643C]" />
           </div>
         </section>
 
@@ -869,4 +889,3 @@ export function TheSacredGardenTemplate({ data, previewMode = false }: TemplateP
     </div>
   );
 }
-
