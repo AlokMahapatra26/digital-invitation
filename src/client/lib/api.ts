@@ -99,3 +99,4 @@ export async function submitWish(
   if (!res.ok) throw new Error('Failed to post wish');
   return await res.json();
 }
+

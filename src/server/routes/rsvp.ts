@@ -90,3 +90,4 @@ rsvpRoute.post('/:slug', async (c) => {
     return c.json({ error: 'Invalid RSVP payload' }, 400);
   }
 });
+

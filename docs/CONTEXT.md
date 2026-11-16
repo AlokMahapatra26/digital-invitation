@@ -29,20 +29,22 @@ The platform empowers couples to:
                                              • Live Wishes & Blessings Wall
 ```
 
-### B. The Couple / Planner Flow
+### B. The Couple Flow (Simplified 1-Click Experience)
 ```
-[Landing Page] ──► [Select Template] ──► [Live Customizer Wizard]
-                                              • General Info (Names, Date, Tagline)
-                                              • Multi-event Manager
-                                              • Love Story Timeline
-                                              • Music & Media Picker
-                                              • Split-Screen Real-Time Preview
-                                              │
-                                              ▼
-                                         [Instant Publish & Share]
-                                              • Custom Link (/invite/:slug)
-                                              • WhatsApp Share Card
-                                              • Downloadable QR Code
+[Template Catalog]
+       │
+       ▼
+[Interactive Template Preview] ──(Taps "Use This Template")──► [Quick Details Modal]
+ (Full animation, wax seal,                                      • Bride & Groom Names
+  music, events, countdown)                                      • Wedding Date
+                                                                 • Main Venue & City
+                                                                 • Optional Shagun UPI ID
+                                                                 │
+                                                                 ▼
+                                                    [Instant Live Invitation Page]
+                                                      • Unique URL (/invite/:slug)
+                                                      • 1-Click WhatsApp Share Card
+                                                      • Direct Invitation Open
 ```
 
 ---
@@ -54,3 +56,4 @@ The platform empowers couples to:
   - Template engines share common visual primitives (`EnvelopeOpening`, `WishesWall`, `RSVPModal`, `CountdownTimer`, `AudioPlayer`, `EventCard`).
   - Themes only define their aesthetic tokens (colors, fonts, ornamentations, animations) while sharing business logic and state.
 - **Auto-Play Compliance**: Modern browsers block unprompted audio autoplay. The "Wax Seal / Open Envelope" action serves as both an emotional reveal and the explicit user gesture required to start music playback.
+

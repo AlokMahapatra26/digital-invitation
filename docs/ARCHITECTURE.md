@@ -69,3 +69,4 @@ interface TemplateProps {
 This guarantees:
 1. **DRY Principle**: Adding a new template only requires creating a single visual layout component that consumes existing shared blocks (`EnvelopeOpening`, `WishesWall`, `RSVPModal`, `CountdownTimer`, `AudioPlayer`, `EventCard`).
 2. **Unified Preview**: The Builder page renders the exact same template component in real-time as the guest page does in production.
+

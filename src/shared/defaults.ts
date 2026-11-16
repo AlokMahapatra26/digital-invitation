@@ -116,3 +116,4 @@ export const SAMPLE_INVITATION: WeddingInvitation = {
   giftNote: 'Your presence and heartfelt blessings are the greatest gifts we could ever ask for! If you still wish to bless us with a token of love, you may send your Shagun digitally:',
   upiId: 'ananya.karan@okhdfcbank',
 };
+

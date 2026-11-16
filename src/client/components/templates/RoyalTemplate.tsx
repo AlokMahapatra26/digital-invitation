@@ -298,3 +298,4 @@ export function RoyalTemplate({ data, previewMode = false }: TemplateProps) {
     </div>
   );
 }
+

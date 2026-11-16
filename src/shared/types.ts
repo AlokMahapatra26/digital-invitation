@@ -101,3 +101,4 @@ export interface TemplateProps {
   data: WeddingInvitation;
   previewMode?: boolean;
 }
+

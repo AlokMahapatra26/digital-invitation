@@ -4,3 +4,4 @@ export interface Bindings {
   KV_CACHE?: any; // Cloudflare KVNamespace binding
   ASSETS?: any; // Cloudflare Static Assets fetcher
 }
+

@@ -80,3 +80,4 @@ export function InvitePage() {
     </div>
   );
 }
+

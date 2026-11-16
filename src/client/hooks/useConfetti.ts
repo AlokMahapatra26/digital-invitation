@@ -61,3 +61,4 @@ export function useConfetti() {
     shootHearts,
   };
 }
+

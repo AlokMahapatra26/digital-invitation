@@ -99,3 +99,4 @@ wishesRoute.post('/:slug', async (c) => {
     return c.json({ error: 'Invalid wish payload' }, 400);
   }
 });
+

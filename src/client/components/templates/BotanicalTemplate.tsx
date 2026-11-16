@@ -173,3 +173,4 @@ export function BotanicalTemplate({ data, previewMode = false }: TemplateProps) 
     </div>
   );
 }
+

@@ -46,3 +46,4 @@ Posts a new blessing / wish to the couple's guestbook.
   }
   ```
 - **Response**: `201 Created`.
+

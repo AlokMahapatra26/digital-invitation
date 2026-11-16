@@ -70,3 +70,4 @@ pnpm run deploy
 - [Technical Architecture](file:///home/alok/All%20projects/Davlabs%20Projects/Our%20Projects/wedding-invitation/docs/ARCHITECTURE.md)
 - [API Documentation](file:///home/alok/All%20projects/Davlabs%20Projects/Our%20Projects/wedding-invitation/docs/API.md)
 - [Developer Guide](file:///home/alok/All%20projects/Davlabs%20Projects/Our%20Projects/wedding-invitation/docs/DEVELOPMENT.md)
+

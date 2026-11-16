@@ -107,3 +107,4 @@ invitationsRoute.post('/', async (c) => {
     return c.json({ error: 'Invalid payload' }, 400);
   }
 });
+

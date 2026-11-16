@@ -38,3 +38,4 @@ CREATE TABLE IF NOT EXISTS wishes (
 );
 
 CREATE INDEX IF NOT EXISTS idx_wishes_invitation_id ON wishes(invitation_id);
+

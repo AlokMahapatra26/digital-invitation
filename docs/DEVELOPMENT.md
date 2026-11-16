@@ -48,3 +48,4 @@ Because the project strictly adheres to DRY:
    - Register the template ID in `src/shared/types.ts` (`TemplateId`).
    - Add the case in [TemplateRenderer.tsx](file:///home/alok/All%20projects/Davlabs%20Projects/Our%20Projects/wedding-invitation/src/client/components/templates/TemplateRenderer.tsx).
    - Add the template option button inside [BuilderForm.tsx](file:///home/alok/All%20projects/Davlabs%20Projects/Our%20Projects/wedding-invitation/src/client/components/builder/BuilderForm.tsx).
+

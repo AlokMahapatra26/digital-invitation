@@ -19,3 +19,4 @@ app.route('/api/rsvp', rsvpRoute);
 app.route('/api/wishes', wishesRoute);
 
 export default app;
+
