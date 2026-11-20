@@ -32,7 +32,10 @@ export function TemplateViewerModal({
     templateId === 'ever-after-bloom' ||
     templateId === 'mountain' ||
     templateId === 'royal-grace' ||
-    templateId === 'the-sacred-garden';
+    templateId === 'the-sacred-garden' ||
+    templateId === 'rajwadi-kankotri' ||
+    templateId === 'kanku-kankotri' ||
+    templateId === 'kumkum-kankotri';
 
   const previewData: WeddingInvitation = {
     ...SAMPLE_INVITATION,
@@ -43,30 +46,34 @@ export function TemplateViewerModal({
         templateId === 'opal-romance'
           ? '/templates/opal-romance/soundtrack.mp3'
           : templateId === 'amber'
-          ? '/templates/amber/music-placeholder.mp3'
-          : templateId === 'ever-after-bloom'
-          ? '/templates/ever-after-bloom/soundtrack.mp3'
-          : templateId === 'mountain'
-          ? '/templates/mountain/soundtrack.mp3'
-          : templateId === 'royal-grace'
-          ? '/templates/royal-grace/soundtrack.mp3'
-          : templateId === 'the-sacred-garden'
-          ? '/templates/the-sacred-garden/soundtrack.mp3'
-          : SAMPLE_INVITATION.theme.backgroundMusicUrl,
+            ? '/templates/amber/music-placeholder.mp3'
+            : templateId === 'ever-after-bloom'
+              ? '/templates/ever-after-bloom/soundtrack.mp3'
+              : templateId === 'mountain'
+                ? '/templates/mountain/soundtrack.mp3'
+                : templateId === 'royal-grace'
+                  ? '/templates/royal-grace/soundtrack.mp3'
+                  : templateId === 'the-sacred-garden'
+                    ? '/templates/the-sacred-garden/soundtrack.mp3'
+                    : templateId === 'rajwadi-kankotri' || templateId === 'kanku-kankotri'
+                      ? '/templates/rajwadi-kankotri/soundtrack.mp3'
+                      : SAMPLE_INVITATION.theme.backgroundMusicUrl,
       musicTitle:
         templateId === 'opal-romance'
           ? 'Opal Palace Garden Romance Symphony'
           : templateId === 'amber'
-          ? 'Sunehri Candlelit Symphony'
-          : templateId === 'ever-after-bloom'
-          ? 'Amrit Mahal Dawn Symphony'
-          : templateId === 'mountain'
-          ? 'Himalayan Santoor & Flute Symphony'
-          : templateId === 'royal-grace'
-          ? 'Royal Grace Acoustic Symphony'
-          : templateId === 'the-sacred-garden'
-          ? 'Ludovico Einaudi — Divenire'
-          : SAMPLE_INVITATION.theme.musicTitle,
+            ? 'Sunehri Candlelit Symphony'
+            : templateId === 'ever-after-bloom'
+              ? 'Amrit Mahal Dawn Symphony'
+              : templateId === 'mountain'
+                ? 'Himalayan Santoor & Flute Symphony'
+                : templateId === 'royal-grace'
+                  ? 'Royal Grace Acoustic Symphony'
+                  : templateId === 'the-sacred-garden'
+                    ? 'Ludovico Einaudi — Divenire'
+                    : templateId === 'rajwadi-kankotri' || templateId === 'kanku-kankotri'
+                      ? 'Mangal Phera (Instrumental Symphony)'
+                      : SAMPLE_INVITATION.theme.musicTitle,
     },
   };
 

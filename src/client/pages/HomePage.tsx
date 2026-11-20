@@ -21,6 +21,19 @@ interface TemplateCardData {
 
 const TEMPLATES: TemplateCardData[] = [
   {
+    id: 'rajwadi-kankotri',
+    title: 'Rajwadi Kankotri',
+    subtitle: 'Royal Mandap & Peacocks • Mangal Phera Symphony • Godhuli Vela Muhurat',
+    description:
+      'Authentic royal Gujarati Kankotri framed with auspicious Mandap peacocks, Mangal Phera soundtrack, sacred Toran, Godhuli Vela countdown, 7-event vidhi, and persistent bottom action bar.',
+    image: '/templates/rajwadi-kankotri/preview.jpg',
+    tag: 'GUJARATI RAJWADI',
+    colors: ['#D4AF37', '#7E121D'],
+    features: ['Royal Mandap Arch', 'Mangal Phera Symphony', 'Godhuli Vela Muhurat', 'Persistent Bottom Action Bar'],
+    price: '₹999',
+    validity: 'one-time · 3 months live',
+  },
+  {
     id: 'amber',
     title: 'Rajasthani Royal',
     subtitle: 'Grand Padharo Sa • Jharokha Parallax • Royal Festivities',

@@ -34,6 +34,13 @@ import { TemplateRenderer } from '@/client/components/templates/TemplateRenderer
 
 const TEMPLATE_OPTIONS: { id: TemplateId; name: string; tag: string; musicTitle: string; musicUrl: string }[] = [
   {
+    id: 'rajwadi-kankotri',
+    name: 'Rajwadi Kankotri',
+    tag: 'Gujarati Rajwadi',
+    musicTitle: 'મંગલ ફેરા (Mangal Phera Instrumental)',
+    musicUrl: '/templates/rajwadi-kankotri/soundtrack.mp3',
+  },
+  {
     id: 'opal-romance',
     name: 'Opal Romance',
     tag: 'Garden Royalty',
@@ -468,11 +475,10 @@ export function CreateInvitationPage() {
           <button
             type="button"
             onClick={() => setActiveTab('couple')}
-            className={`flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'couple'
-                ? 'bg-[#8C2323] text-white shadow-sm'
-                : 'text-[#7A6B56] hover:text-[#2C211E] hover:bg-[#FAF6F0]'
-            }`}
+            className={`flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${activeTab === 'couple'
+              ? 'bg-[#8C2323] text-white shadow-sm'
+              : 'text-[#7A6B56] hover:text-[#2C211E] hover:bg-[#FAF6F0]'
+              }`}
           >
             <Users className="w-4 h-4" />
             <span>1. Couple & Photos</span>
@@ -481,11 +487,10 @@ export function CreateInvitationPage() {
           <button
             type="button"
             onClick={() => setActiveTab('events')}
-            className={`flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'events'
-                ? 'bg-[#8C2323] text-white shadow-sm'
-                : 'text-[#7A6B56] hover:text-[#2C211E] hover:bg-[#FAF6F0]'
-            }`}
+            className={`flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${activeTab === 'events'
+              ? 'bg-[#8C2323] text-white shadow-sm'
+              : 'text-[#7A6B56] hover:text-[#2C211E] hover:bg-[#FAF6F0]'
+              }`}
           >
             <Calendar className="w-4 h-4" />
             <span>2. Events ({events.length})</span>
@@ -494,11 +499,10 @@ export function CreateInvitationPage() {
           <button
             type="button"
             onClick={() => setActiveTab('gallery')}
-            className={`flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'gallery'
-                ? 'bg-[#8C2323] text-white shadow-sm'
-                : 'text-[#7A6B56] hover:text-[#2C211E] hover:bg-[#FAF6F0]'
-            }`}
+            className={`flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${activeTab === 'gallery'
+              ? 'bg-[#8C2323] text-white shadow-sm'
+              : 'text-[#7A6B56] hover:text-[#2C211E] hover:bg-[#FAF6F0]'
+              }`}
           >
             <ImageIcon className="w-4 h-4" />
             <span>3. Gallery & Music</span>
@@ -507,11 +511,10 @@ export function CreateInvitationPage() {
           <button
             type="button"
             onClick={() => setActiveTab('preview')}
-            className={`flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'preview'
-                ? 'bg-[#8C2323] text-white shadow-sm'
-                : 'text-[#7A6B56] hover:text-[#2C211E] hover:bg-[#FAF6F0]'
-            }`}
+            className={`flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${activeTab === 'preview'
+              ? 'bg-[#8C2323] text-white shadow-sm'
+              : 'text-[#7A6B56] hover:text-[#2C211E] hover:bg-[#FAF6F0]'
+              }`}
           >
             <Eye className="w-4 h-4" />
             <span>4. Live Preview</span>

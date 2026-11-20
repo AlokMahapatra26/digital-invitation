@@ -14,6 +14,7 @@ import {
   Music,
   Users,
   LayoutDashboard,
+  Sparkles,
 } from 'lucide-react';
 import { TemplateId, WeddingInvitation, WeddingEvent } from '@/shared/types';
 import { SAMPLE_INVITATION } from '@/shared/defaults';
