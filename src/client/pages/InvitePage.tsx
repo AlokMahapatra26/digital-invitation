@@ -48,7 +48,10 @@ export function InvitePage() {
     data.theme?.templateId === 'ever-after-bloom' ||
     data.theme?.templateId === 'mountain' ||
     data.theme?.templateId === 'royal-grace' ||
-    data.theme?.templateId === 'the-sacred-garden';
+    data.theme?.templateId === 'the-sacred-garden' ||
+    data.theme?.templateId === 'rajwadi-kankotri' ||
+    data.theme?.templateId === 'kanku-kankotri' ||
+    data.theme?.templateId === 'kumkum-kankotri';
 
   if (loading) {
     return (

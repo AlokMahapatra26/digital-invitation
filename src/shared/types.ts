@@ -7,6 +7,8 @@ export type TemplateId =
   | 'mountain'
   | 'royal-grace'
   | 'the-sacred-garden'
+  | 'rajwadi-kankotri'
+  | 'kanku-kankotri'
   | 'kumkum-kankotri'
   | 'patola-ivory';
 

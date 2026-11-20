@@ -5,7 +5,7 @@ import { MountainTemplate } from './MountainTemplate';
 import { EverAfterBloomTemplate } from './EverAfterBloomTemplate';
 import { RoyalGraceTemplate } from './RoyalGraceTemplate';
 import { TheSacredGardenTemplate } from './TheSacredGardenTemplate';
-import { KumkumKankotriTemplate } from './KumkumKankotriTemplate';
+import { RajwadiKankotriTemplate } from './RajwadiKankotriTemplate';
 import { PatolaIvoryTemplate } from './PatolaIvoryTemplate';
 
 export function TemplateRenderer({ data, previewMode = false }: TemplateProps) {
@@ -26,8 +26,10 @@ export function TemplateRenderer({ data, previewMode = false }: TemplateProps) {
       return <TheSacredGardenTemplate data={data} previewMode={previewMode} />;
     case 'patola-ivory':
       return <PatolaIvoryTemplate data={data} previewMode={previewMode} />;
+    case 'rajwadi-kankotri':
+    case 'kanku-kankotri':
     case 'kumkum-kankotri':
     default:
-      return <KumkumKankotriTemplate data={data} previewMode={previewMode} />;
+      return <RajwadiKankotriTemplate data={data} previewMode={previewMode} />;
   }
 }
